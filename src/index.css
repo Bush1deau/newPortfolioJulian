@@ -168,3 +168,16 @@ p {
     text-align: left;
   }
 }
+
+.slick-slider {
+  display: block !important; /* Assure que le slider est visible */
+}
+
+.slick-list {
+  overflow: hidden; /* Empêche les débordements */
+}
+
+.slick-track {
+  display: flex; /* Force le comportement en ligne */
+  transition: transform 0.5s ease !important; /* Fluidité pour les transitions */
+}
