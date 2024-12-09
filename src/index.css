@@ -22,7 +22,7 @@ body {
 
 .titres h1 {
   color: #072a40; /* bleu foncé */
-  font-size: 3rem;
+  font-size: 4rem;
   animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -140,6 +140,31 @@ p {
   font-size: xx-large;
 }
 .experience p {
-  margin: 5px 0;
+  margin: 10px 0;
   font-size: large;
+}
+
+.company-logo {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.experience-details {
+  flex: 1;
+}
+/* Media query for tablet and below */
+@media (max-width: 768px) {
+  .experience {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .company-logo {
+    margin: 0 auto 20px auto;
+  }
+
+  .experience-details {
+    text-align: left;
+  }
 }
