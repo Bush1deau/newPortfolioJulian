@@ -60,7 +60,6 @@ const App = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };

@@ -9,12 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  color: #072a40; /* bleu foncé */
-  font-size: 3rem;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -25,6 +19,14 @@ h1 {
     transform: translateY(0);
   }
 }
+
+.titres h1 {
+  color: #072a40; /* bleu foncé */
+  font-size: 3rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
 
 a {
   cursor: pointer;
@@ -70,11 +72,12 @@ p {
 }
 
 .burger-nav.open {
-  display: flex;
-  max-height: 500px; /* Adjust this value based on the content */
+  display: flex; 
+  max-height: 500px; 
 }
 
-@media (max-width: 768px) {
+/* Apparition du menu burger pour résolution tablette et < */
+@media (max-width: 768px) { 
   .nav-links {
     display: none;
   }
@@ -88,4 +91,55 @@ p {
   }
 }
 
+/* Bouton Download CV */
+.download-button {
+  display: inline-block;
+  margin-top: 5%;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #178ca4; /* Turquoise */
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 5px 5px #0f5c6b; /* Turquoise foncé */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.download-button:hover {
+  background-color: #0f5c6b; /* Turquoise foncé */
+}
+.download-button:active {
+  box-shadow: 0 2px #0f5c6b; /* Turquoise foncé */
+  transform: translateY(3px);
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
 
+/* Divider CV */
+.divider {
+  margin: 70px auto;
+  width: 80%;
+  border: 0;
+  height: 3px;
+  background: #34495e; /* Gris foncé */
+}
+
+/* Texte expérience CV */
+.experiences {
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+}
+.experience {
+  margin-bottom: 20px;
+  padding-top: 50px;
+}
+.experience h3 {
+  margin: 10px 0;
+  font-size: xx-large;
+}
+.experience p {
+  margin: 5px 0;
+  font-size: large;
+}
