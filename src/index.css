@@ -181,3 +181,80 @@ p {
   display: flex; /* Force le comportement en ligne */
   transition: transform 0.5s ease !important; /* Fluidité pour les transitions */
 }
+
+
+.realisations {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.accordion {
+  margin-bottom: 1rem;
+}
+
+.accordion-header {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #18b7be;
+}
+
+.accordion-content {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+}
+
+.project-card {
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: white;
+  margin: 1rem;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #18b7be;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin: 0.2rem;
+}
+
+.github-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.github-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.github-icon:hover {
+  transform: scale(1.2);
+}
+
+.github-icon.crossed {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
