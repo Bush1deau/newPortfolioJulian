@@ -7,52 +7,124 @@ import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
 
 const projects = {
-  Professionnels: [
+  Professionnelles: [
     {
       title: "Automatisation des processus",
-      description: "Développement de solutions RPA pour améliorer l'efficacité.",
-      image: "path/to/rpa-project.jpg",
-      tags: ["UIPath", "Python", "RPA"],
-      github: "https://github.com/user/rpa-project",
+      description: "Développement de 8 solutions RPA pour automatiser des tâches répétitives.",
+      image: "rpa-article.png",
+      tags: ["UIPath", "Python", "VB.Net"],
+      github: null,
+      isGroup: false,
     },
     {
       title: "Maintenance de machines virtuelles",
       description: "Optimisation et gestion des VM en environnement professionnel.",
-      image: "path/to/vm-maintenance.jpg",
+      image: "vm-article.png",
       tags: ["C#", "PowerShell"],
       github: null,
+      isGroup: false,
+    },
+    {
+      title: "Redéveloppement du site internet du Lycée Watteau",
+      description: "Optimisation du site web pour améliorer les performances.",
+      image: "site-web-article.png",
+      tags: ["HTML", "CSS", "JavaScript", "PHP"],
+      github: null,
+      isGroup: false,
+    },
+    {
+      title: "Développement d'un site vitrine pour une startup de domotique",
+      description: "Développement d'un site internet pour présenter les services de la startup.",
+      image: "site-web-2-article.jpg",
+      tags: ["HTML", "CSS", "JavaScript"],
+      github: null,
+      isGroup: false,
     },
   ],
+
+
   Scolaires: [
     {
-      title: "Gestion scolaire",
-      description: "Création d'un site web en PHP et MySQL pour gérer les inscriptions.",
-      image: "path/to/school-project.jpg",
-      tags: ["PHP", "MySQL", "HTML"],
-      github: "https://github.com/user/school-project",
+      title: "Projet ecommerce sur la normalisation des données",
+      description: "Création d'un microservice pour gérer les commandes et produits d'un site e-commerce.",
+      image: "ecommerce.png",
+      tags: ["Python", "TypeScript", "React", "Docker", "PostgreSQL"],
+      github: "https://github.com/nicolas-petey/ecommerce",
+      isGroup: true,
     },
     {
-      title: "Jeu éducatif",
-      description: "Conception d'un jeu en Python pour apprendre les mathématiques.",
-      image: "path/to/game-project.jpg",
-      tags: ["Python", "Pygame"],
+      title: "Pierre-Feuille-Ciseaux en Python",
+      description: "Conception d'un jeu en Python pour apprendre les conditions",
+      image: "shifoumi.jpg",
+      tags: ["Python"],
       github: null,
+      isGroup: false,
+    },
+    {
+      title: "Twitch Angular",
+      description: "Développement de l'application Twitch en Angular pour apprendre le framework.",
+      image: "twitch.jpg",
+      tags: ["Angular", "TypeScript", "Tailwind CSS"],
+      github: "https://github.com/Bush1deau/angular-twitch",
+      isGroup: true,
+    },
+    {
+      title: "Sentim-analyze",
+      description: "Conception d'une application pour analyser le sentiment des mots.",
+      image: "sentim-analyze.webp",
+      tags: ["Node.js", "TypeScript", "React", "IA"],
+      github: "https://github.com/nicolas-petey/sentim-analyze",
+      isGroup: true,
+    },
+    {
+      title: "Bid Process",
+      description: "Conception d'une application pour gérer les processus d'offres.",
+      image: "bid-process.webp",
+      tags: ["Java", "Spring Boot", "Angular", "PostgreSQL"],
+      github: "https://github.com/Bush1deau/BidProcessJavaAPI",
+      isGroup: false,
+    },
+    {
+      title: "Livré'bon",
+      description: "Conception d'une application pour gérer les livraisons de nourriture.",
+      image: "livrebon.webp",
+      tags: ["Symfony", "PHP", "MySQL"],
+      github: "https://github.com/Bush1deau/livrebon",
+      isGroup: true,
+    },
+    {
+      title: "Pokedex Mobile",
+      description: "Conception d'un pokedex mobile pour apprendre le développement mobile avec PokeAPI.",
+      image: "pokedex.jpeg",
+      tags: ["Flutter", "Dart"],
+      github: null,
+      isGroup: false,
     },
   ],
-  Personnels: [
+  Personnelles: [
     {
       title: "Portfolio personnel",
-      description: "Création de mon portfolio en ReactJS avec animations avancées.",
-      image: "path/to/portfolio.jpg",
+      description: "Création de mon portfolio en ReactJS",
+      image: "portfolio.png",
       tags: ["React", "JavaScript", "CSS"],
-      github: "https://github.com/user/portfolio",
+      github: "https://github.com/Bush1deau/newPortfolioJulian",
+      isGroup: false,
     },
     {
-      title: "Blog tech",
-      description: "Développement d'un blog pour partager des articles techniques.",
-      image: "path/to/blog.jpg",
+      title: "Blog club de danse Raismes",
+      description: "Développement d'un blog pour partager les actualités du club de danse.",
+      image: "bdc.png",
       tags: ["WordPress", "PHP"],
       github: null,
+      isGroup: false,
+    },
+    {
+      title: "Footballer Comparison",
+      description: "Développement d'un process RPA pour comparer les statistiques des joueurs de football.",
+      image: "footballer-comparaison.jpg",
+      tags: ["RPA", "VB.Net", "IA"],
+      github: null,
+      isGroup: false,
     },
   ],
 };
@@ -64,7 +136,7 @@ const Accordion = ({ title, children }) => {
   const animation = useSpring({
     height: isOpen ? bounds.height : 0,
     opacity: isOpen ? 1 : 0,
-    config: { tension: 170, friction: 26 },
+    config: { tension: 500, friction: 100 },
   });
 
   return (
@@ -102,7 +174,7 @@ const Accordion = ({ title, children }) => {
   );
 };
 
-const ProjectCard = ({ title, description, image, tags, github }) => {
+const ProjectCard = ({ title, description, image, tags, github, isGroup }) => {
   return (
     <div className="project-card">
       <img src={image} alt={title} className="project-image" />
@@ -126,11 +198,18 @@ const ProjectCard = ({ title, description, image, tags, github }) => {
           </a>
         ) : (
           <img
-            src="path/to/github-icon-crossed.png"
+            src="logo-github-crossed.png"
             alt="No GitHub Link"
             className="github-icon crossed"
           />
         )}
+      </div>
+      <div className="group-link">
+        <img
+          src={isGroup ? "groupe.png" : "pas-groupe.png"}
+          alt={isGroup ? "Travail en groupe" : "Travail en solo"}
+          className="group-icon"
+        />
       </div>
     </div>
   );
@@ -139,8 +218,8 @@ const ProjectCard = ({ title, description, image, tags, github }) => {
 const Realisations = () => {
   const settings = {
     dots: false,
-    infinite: true,
-    speed: 500,
+    infinite: false,
+    speed: 900,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [

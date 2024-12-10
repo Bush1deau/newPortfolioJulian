@@ -215,6 +215,11 @@ p {
   border-radius: 8px;
   background-color: white;
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 470px; /* Définit une hauteur fixe pour la carte */
 }
 
 .project-image {
@@ -229,6 +234,7 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
 .tag {
@@ -239,14 +245,20 @@ p {
   margin: 0.2rem;
 }
 
+.github-link, .group-link {
+  display: flex;
+  justify-content: left;
+}
+
 .github-link {
-  margin-top: 1rem;
-  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
 .github-icon {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   transition: transform 0.3s ease;
 }
 
@@ -256,5 +268,22 @@ p {
 
 .github-icon.crossed {
   opacity: 0.5;
-  filter: grayscale(100%);
+  filter: grayscale(50%);
 }
+.github-icon.crossed:hover {
+  transform: scale(1);
+}
+
+
+.group-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; /* Positionne l'icône en bas à droite */
+}
+
+.group-icon {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
