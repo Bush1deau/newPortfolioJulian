@@ -136,24 +136,6 @@ const About = () => {
           </div>
         </div>
       </div>
-     
-      {/* Section Philosophie de travail */}
-      <div style={{ marginTop: '50px', padding: '0 5%' }}>
-        <h2 style={{ color: '#072a40' }}>Ma philosophie</h2>
-        <p style={{ fontSize: '1.2rem', color: '#34495e', lineHeight: '1.8' }}>
-          J'aime travailler dans un environnement collaboratif, où les idées sont partagées et les défis sont abordés collectivement.
-          Mon objectif est de créer des solutions qui ont un impact positif, tout en apprenant et en évoluant constamment.
-        </p>
-      </div>
-
-      {/* Section Vision Future */}
-      <div style={{ marginTop: '50px', padding: '0 5%' }}>
-        <h2 style={{ color: '#072a40' }}>Ma vision</h2>
-        <p style={{ fontSize: '1.2rem', color: '#34495e', lineHeight: '1.8' }}>
-          Je me projette dans des projets innovants et porteurs, en utilisant des technologies novatrices pour repousser les limites de ce qui est possible.
-          Mon objectif est de continuer à apprendre et à innover dans le domaine du développement.
-        </p>
-      </div>
     </div>
   );
 };

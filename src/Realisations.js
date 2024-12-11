@@ -196,13 +196,7 @@ const ProjectCard = ({ title, description, image, tags, github, isGroup }) => {
               className="github-icon"
             />
           </a>
-        ) : (
-          <img
-            src="logo-github-crossed.png"
-            alt="No GitHub Link"
-            className="github-icon crossed"
-          />
-        )}
+        ) : null}
       </div>
       <div className="group-link">
         <img
@@ -231,6 +225,16 @@ const Realisations = () => {
   return (
     <div className="realisations">
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Mes Réalisations</h1>
+      <div className="legend">
+        <div className="legend-item">
+          <img src="groupe.png" alt="Projet en groupe" className="legend-icon" />
+          <span>Projet en groupe</span>
+        </div>
+        <div className="legend-item">
+          <img src="pas-groupe.png" alt="Projet solo" className="legend-icon" />
+          <span>Projet solo</span>
+        </div>
+      </div>
       {Object.entries(projects).map(([category, projectList], index) => (
         <Accordion key={index} title={category}>
           <Slider {...settings}>

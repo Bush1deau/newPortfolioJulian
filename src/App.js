@@ -5,6 +5,7 @@ import Cv from './Cv';
 import Realisations from './Realisations';
 import About from './About';
 import Contact from './Contact';
+import Footer from './Footer';
 
 const NavLink = ({ to, text, navLinkStyle, navLinkHoverStyle, onClick }) => (
   <Link
@@ -89,27 +90,58 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth) * 50;
+      const y = (clientY / window.innerHeight) * 50;
+      const homeElement = document.querySelector('.home');
+      if (homeElement) {
+        homeElement.style.backgroundPosition = `${x}% ${y}%`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <Router>
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Routes>
         <Route path="/" element={
-          <div style={{ textAlign: 'center', marginTop: '10%' }}>
-            <h1 className="fade-in">Bienvenue sur le portfolio de <br /> Julian LEROY</h1>
-            <p style={{
-              fontSize: '1.5rem',
-              color: '#34495e', // Gris foncé
-              marginTop: '10px',
-            }}>
-              <i>Construisons ensemble l'avenir numérique !</i>
-            </p>
-          </div>
-        } />
+          <div className="home">
+            <div className="overlay"></div>
+            <div className="content">
+              <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
+              <p className="fade-in" style={{
+                fontSize: '1.5rem',
+                color: '#fff', // Blanc
+                marginTop: '10px',
+                fontFamily: 'Jost',
+              }}>
+                <i>Construisons ensemble l'avenir numérique !</i>
+              </p>
+              <div className="cta-buttons">
+                <Link to="/cv" className="cta-button">Voir mon CV</Link>
+                <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
+              </div>
+            </div>
+            </div>
+            
+                  } 
+                  
+        />
+        
         <Route path="/cv" element={<Cv />} />
         <Route path="/realisations" element={<Realisations />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
