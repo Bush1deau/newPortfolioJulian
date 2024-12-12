@@ -49,7 +49,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
   };
 
   const navLinkHoverStyle = {
-    backgroundColor: '#18b7be', // turquoise clair
+    backgroundColor: '#0f5c6b', // turquoise clair
     color: 'white',
   };
 
@@ -63,7 +63,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
         backgroundColor: '#178ca4', // Turquoise
         boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
       }}>
-        <div className="nav-links">
+        <div className="nav-links ">
           <NavLink to="/" text="Accueil" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
           <NavLink to="/cv" text="Mon CV" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
           <NavLink to="/realisations" text="Mes réalisations" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
@@ -76,7 +76,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
       </nav>
 
       {/* Burger Menu */}
-      <div className={`burger-nav ${menuOpen ? 'open' : ''}`}>
+      <div className={`burger-nav ${menuOpen ? 'open' : ''}` } >
         <NavLink to="/" text="Accueil" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
         <NavLink to="/cv" text="Mon CV" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
         <NavLink to="/realisations" text="Mes réalisations" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
@@ -90,23 +90,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth) * 50;
-      const y = (clientY / window.innerHeight) * 50;
-      const homeElement = document.querySelector('.home');
-      if (homeElement) {
-        homeElement.style.backgroundPosition = `${x}% ${y}%`;
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  ;
 
   return (
     <Router>
@@ -114,15 +98,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={
           <div className="home">
-            <div className="overlay"></div>
             <div className="content">
               <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
-              <p className="fade-in" style={{
-                fontSize: '1.5rem',
-                color: '#fff', // Blanc
-                marginTop: '10px',
-                fontFamily: 'Jost',
-              }}>
+              <p className="fade-in slogan">
                 <i>Construisons ensemble l'avenir numérique !</i>
               </p>
               <div className="cta-buttons">
@@ -141,7 +119,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Footer />
+      <Footer/>
     </Router>
   );
 };

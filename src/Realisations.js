@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import useMeasure from "react-use-measure";
-import { useSpring, animated } from "@react-spring/web";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,8 +39,6 @@ const projects = {
       isGroup: false,
     },
   ],
-
-
   Scolaires: [
     {
       title: "Projet ecommerce sur la normalisation des données",
@@ -129,54 +125,17 @@ const projects = {
   ],
 };
 
-const Accordion = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [ref, bounds] = useMeasure();
-
-  const animation = useSpring({
-    height: isOpen ? bounds.height : 0,
-    opacity: isOpen ? 1 : 0,
-    config: { tension: 500, friction: 100 },
-  });
-
-  return (
-    <div className="accordion">
-      <div
-        className="accordion-header"
-        onClick={() => setIsOpen(!isOpen)}
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          backgroundColor: "#178ca4",
-          color: "white",
-          padding: "10px",
-          cursor: "pointer",
-        }}
-      >
-        <h3 style={{ margin: 0 }}>{title}</h3>
-        <span
-          style={{
-            fontSize: "1.5rem",
-            transition: "transform 0.3s",
-            transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-          }}
-        >
-          {isOpen ? "➡️" : "➡️"}
-        </span>
-      </div>
-      <animated.div style={{ ...animation, overflow: "hidden" }}>
-        <div ref={ref} className="accordion-content">
-          {children}
-        </div>
-      </animated.div>
-    </div>
-  );
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
 };
 
 const ProjectCard = ({ title, description, image, tags, github, isGroup }) => {
   return (
-    <div className="project-card">
+    <div className="project">
       <img src={image} alt={title} className="project-image" />
       <h4>{title}</h4>
       <p>{description}</p>
@@ -191,7 +150,7 @@ const ProjectCard = ({ title, description, image, tags, github, isGroup }) => {
         {github ? (
           <a href={github} target="_blank" rel="noopener noreferrer">
             <img
-              src="logo-github.png"
+              src="/logo-github.png"
               alt="GitHub Link"
               className="github-icon"
             />
@@ -200,7 +159,7 @@ const ProjectCard = ({ title, description, image, tags, github, isGroup }) => {
       </div>
       <div className="group-link">
         <img
-          src={isGroup ? "groupe.png" : "pas-groupe.png"}
+          src={isGroup ? "/groupe.png" : "/pas-groupe.png"}
           alt={isGroup ? "Travail en groupe" : "Travail en solo"}
           className="group-icon"
         />
@@ -210,33 +169,23 @@ const ProjectCard = ({ title, description, image, tags, github, isGroup }) => {
 };
 
 const Realisations = () => {
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 900,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
-  };
-
   return (
     <div className="realisations">
       <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Mes Réalisations</h1>
       <div className="legend">
         <div className="legend-item">
-          <img src="groupe.png" alt="Projet en groupe" className="legend-icon" />
+          <img src="/groupe.png" alt="Projet en groupe" className="legend-icon" />
           <span>Projet en groupe</span>
         </div>
         <div className="legend-item">
-          <img src="pas-groupe.png" alt="Projet solo" className="legend-icon" />
+          <img src="/pas-groupe.png" alt="Projet solo" className="legend-icon" />
           <span>Projet solo</span>
         </div>
       </div>
       {Object.entries(projects).map(([category, projectList], index) => (
-        <Accordion key={index} title={category}>
+        <div key={index}>
+          <hr className="divider" />
+          <h2 style={{ textAlign: "center", marginTop: "2rem" }}>{category}</h2>
           <Slider {...settings}>
             {projectList.map((project, idx) => (
               <div key={idx}>
@@ -244,7 +193,7 @@ const Realisations = () => {
               </div>
             ))}
           </Slider>
-        </Accordion>
+        </div>
       ))}
     </div>
   );
