@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.css';
-import waveImage from './waves-footer.png'; // Chemin relatif au fichier Footer.js
 
 const Footer = () => {
   return (
