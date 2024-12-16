@@ -38,54 +38,38 @@ const Contact = () => {
         Me contacter
       </h1>
 
+      {/* Informations de contact */}
+      <div className="contact-container">
       {/* Première ligne (Numéro de téléphone et email) */}
-      <div
-        style={{
-          marginTop: '30px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '40px',
-          flexWrap: 'wrap',
-          justifyContent: 'space-evenly',
-          fontFamily: 'Jost',
-        }}
-      >
-        <div style={{ textAlign: 'center' }}>
-          <img src="appel.png" alt="Phone Icon" style={{ width: '40px', height: '40px' }} />
+      <div className="contact-info">
+        <div className="contact-item">
+          <img src="appel.png" alt="Phone Icon" className="contact-icon" />
           <p>Tél: 07 81 86 81 57</p>
         </div>
 
-        <div style={{ textAlign: 'center' }}>
-          <img src="email.png" alt="Email Icon" style={{ width: '40px', height: '40px' }} />
+        <div className="contact-item">
+          <img src="email.png" alt="Email Icon" className="contact-icon" />
           <p>Email: julianleroy3@gmail.com</p>
         </div>
       </div>
 
       {/* Deuxième ligne (LinkedIn et GitHub) */}
-      <div
-        style={{
-          marginTop: '20px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '40px',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-        }}
-      >
-        <div className="contact-icon">
+      <div className="contact-info">
+        <div className="contact-item">
           <a href="https://www.linkedin.com/in/julian-leroy" target="_blank" rel="noopener noreferrer">
-            <img src="linkedin.png" alt="LinkedIn Icon" style={{ width: '40px', height: '40px' }} />
+            <img src="linkedin.png" alt="LinkedIn Icon" className="contact-icon" />
           </a>
+          <p>LinkedIn: Julian Leroy</p>
         </div>
 
-        <div className="contact-icon">
+        <div className="contact-item">
           <a href="https://github.com/Bush1deau" target="_blank" rel="noopener noreferrer">
-            <img src="github.png" alt="GitHub Icon" style={{ width: '40px', height: '40px' }} />
+            <img src="github.png" alt="GitHub Icon" className="contact-icon" />
           </a>
+          <p>GitHub: Bush1deau</p>
         </div>
       </div>
+    </div>
 
       {/* Formulaire de contact */}
       <div style={{ marginTop: '50px', fontFamily: 'Jost' }}>

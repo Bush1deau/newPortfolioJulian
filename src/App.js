@@ -49,7 +49,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
   };
 
   const navLinkHoverStyle = {
-    backgroundColor: '#0f5c6b', // turquoise clair
+    backgroundColor: '#0f5c6b',
     color: 'white',
   };
 
@@ -60,10 +60,10 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px',
-        backgroundColor: '#178ca4', // Turquoise
+        backgroundColor: '#178ca4',
         boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
       }}>
-        <div className="nav-links ">
+        <div className="nav-links">
           <NavLink to="/" text="Accueil" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
           <NavLink to="/cv" text="Mon CV" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
           <NavLink to="/realisations" text="Mes réalisations" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
@@ -76,7 +76,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
       </nav>
 
       {/* Burger Menu */}
-      <div className={`burger-nav ${menuOpen ? 'open' : ''}` } >
+      <div className={`burger-nav ${menuOpen ? 'open' : ''}`}>
         <NavLink to="/" text="Accueil" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
         <NavLink to="/cv" text="Mon CV" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
         <NavLink to="/realisations" text="Mes réalisations" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
@@ -89,8 +89,6 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  ;
 
   return (
     <Router>
@@ -108,18 +106,14 @@ const App = () => {
                 <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
               </div>
             </div>
-            </div>
-            
-                  } 
-                  
-        />
-        
+          </div>
+        } />
         <Route path="/cv" element={<Cv />} />
         <Route path="/realisations" element={<Realisations />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 };

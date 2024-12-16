@@ -84,19 +84,29 @@ body, html {
 
 .cta-button {
   display: inline-block;
+  margin-top: 5%;
+  margin-inline: 10px;
   padding: 15px 30px;
-  margin: 10px;
   font-size: 1.2rem;
   color: white;
-  background-color: #18b7be; /* Turquoise clair */
+  background-color: #178ca4; /* Turquoise */
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  box-shadow: 5px 5px #0f5c6b; /* Turquoise foncé */
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .cta-button:hover {
   background-color: #0f5c6b; /* Turquoise foncé */
+}
+
+.cta-button:active {
+  box-shadow: 0 2px #0f5c6b; /* Turquoise foncé */
+  transform: translateY(3px);
+  margin-right: 5px;
+  margin-top: 5px;
 }
 
 .nav-links {
@@ -367,15 +377,48 @@ body, html {
 
 
 
-/* Contact */
+.contact-container {
+  padding: 20px;
+  font-family: 'Jost', sans-serif;
+}
+
+.contact-info {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly; /* Espacement uniforme */
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  width: 200px; /* Largeur fixe pour uniformiser */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrage des icônes et textes */
+  text-align: center;
+}
+
 .contact-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   transition: transform 0.3s ease;
 }
 
 .contact-icon:hover {
   transform: scale(1.2);
+}
+
+/* Media query pour mobile et tablette */
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column; /* Empile les éléments verticalement */
+    gap: 20px; /* Réduit l'espacement */
+  }
+
+  .contact-item {
+    width: 100%; /* Utilise toute la largeur disponible */
+  }
 }
 
 
@@ -414,6 +457,7 @@ body, html {
       grid-gap: 4rem;
       padding:2rem;
       background:var(--footer-background);
+      justify-content: center;
       a, p {
           color:#F5F7FA;
           text-decoration:none;
@@ -474,8 +518,8 @@ body, html {
 
 @keyframes bubble-size {
 0%, 55% {
-  width:var(--size, 4rem);
-  height:var(--size, 4rem);
+  width:var(--size, 2rem);
+  height:var(--size, 2rem);
 }
 100% {
   width:0rem;
@@ -487,7 +531,7 @@ body, html {
   bottom:-4rem;
 }
 100% {
-  bottom:var(--distance, 10rem);
+  bottom:var(--distance, 5rem);
 }
 }
 
