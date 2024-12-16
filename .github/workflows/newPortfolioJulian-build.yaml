@@ -27,8 +27,8 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Change directory
-        run: cd newPortfolioJulian
+      - name: List project files
+        run: ls -R
     
       - name: Run script
 # uncomment the following lines if you want to add environment variables for this step
