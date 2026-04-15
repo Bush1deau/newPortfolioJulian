@@ -90,24 +90,28 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
 const AppContent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
 
   return (
-    <div className={`app-wrapper${location.pathname === '/' ? ' home-layout' : ''}`}>
+    <div className="app-wrapper">
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main className="main-content">
         <Routes>
           <Route path="/" element={
-            <div className="home">
-              <div className="home-content">
-                <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
-                <p className="fade-in slogan">
-                  <i>Construisons ensemble l'avenir numérique !</i>
-                </p>
-                <div className="cta-buttons">
-                  <Link to="/cv" className="cta-button">Voir mon CV</Link>
-                  <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
+            <div className="home-page">
+              <div className="home">
+                <div className="home-content">
+                  <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
+                  <p className="fade-in slogan">
+                    <i>Construisons ensemble l'avenir numérique !</i>
+                  </p>
+                  <div className="cta-buttons">
+                    <Link to="/cv" className="cta-button">Voir mon CV</Link>
+                    <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
+                  </div>
                 </div>
               </div>
+              <Footer />
             </div>
           } />
           <Route path="/cv" element={<Cv />} />
@@ -116,7 +120,7 @@ const AppContent = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <Footer />
+      {!isHome && <Footer />}
     </div>
   );
 };
