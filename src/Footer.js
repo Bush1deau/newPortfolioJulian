@@ -1,6 +1,8 @@
 import React from 'react';
 import './index.css';
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
 const Footer = () => {
   return (
     <div className="main">
@@ -11,8 +13,12 @@ const Footer = () => {
               key={i}
               className="bubble"
               style={{
-                "--size": `${2 + Math.random() * 4}rem`,
-                "--distance": `${2 + Math.random() * 2}rem`,
+                "--size": isMobile
+                  ? `${1 + Math.random() * 2}rem`
+                  : `${0.5 + Math.random() * 1}rem`,
+                "--distance": isMobile
+                  ? `${2 + Math.random() * 2}rem`
+                  : `${1 + Math.random() * 1}rem`,
                 "--position": `${-5 + Math.random() * 110}%`,
                 "--time": `${2 + Math.random() * 2}s`,
                 "--delay": `${-1 * (2 + Math.random() * 2)}s`,

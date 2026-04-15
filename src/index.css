@@ -456,6 +456,11 @@ body, html {
   grid-area: footer;
   min-height: 6rem;
   padding-top: 30px;
+
+  @media (min-width: 769px) {
+    min-height: 4rem;
+    padding-top: 8px;
+  }
   .bubbles {
       position: absolute;
       top:0;
