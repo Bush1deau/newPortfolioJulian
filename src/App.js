@@ -92,7 +92,7 @@ const AppContent = () => {
   const location = useLocation();
 
   return (
-    <div className="app-wrapper">
+    <div className={`app-wrapper${location.pathname === '/' ? ' home-layout' : ''}`}>
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main className="main-content">
         <Routes>
@@ -116,7 +116,7 @@ const AppContent = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      {location.pathname === '/' && <Footer />}
+      <Footer />
     </div>
   );
 };
