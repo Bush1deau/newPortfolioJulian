@@ -11,23 +11,34 @@ body, html {
   background-color: #f4f4f4;
 }
 
-.app-container {
+.app-wrapper {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .home {
-  position: relative;
-  height: 100vh;
-  background-color: #f4f4f4;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f4f4f4;
   color: #0f5c6b;
   text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
+.home-content {
+  position: relative;
+  z-index: 1;
+}
 
 .content {
   position: relative;
@@ -80,33 +91,46 @@ body, html {
 
 .cta-buttons {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
 }
 
 .cta-button {
   display: inline-block;
-  margin-top: 5%;
-  margin-inline: 10px;
   padding: 15px 30px;
   font-size: 1.2rem;
   color: white;
-  background-color: #178ca4; /* Turquoise */
+  background-color: #178ca4;
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  box-shadow: 5px 5px #0f5c6b; /* Turquoise foncé */
+  box-shadow: 5px 5px #0f5c6b;
   transition: all 0.3s ease;
   cursor: pointer;
+  min-width: 180px;
+  text-align: center;
 }
 
 .cta-button:hover {
-  background-color: #0f5c6b; /* Turquoise foncé */
+  background-color: #0f5c6b;
 }
 
 .cta-button:active {
-  box-shadow: 0 2px #0f5c6b; /* Turquoise foncé */
+  box-shadow: 0 2px #0f5c6b;
   transform: translateY(3px);
-  margin-right: 5px;
-  margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-button {
+    width: 220px;
+  }
 }
 
 .nav-links {
