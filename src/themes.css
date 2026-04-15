@@ -55,27 +55,27 @@
 
 /* ─── BAC+5 — Maîtrise ──────────────────────────────────── */
 [data-theme="bac5"] {
-  --color-bg:           #09090b;
-  --color-surface:      rgba(255,255,255,0.04);
-  --color-primary:      #8b5cf6;
-  --color-primary-dark: #6d28d9;
-  --color-accent:       #06b6d4;
-  --color-text:         #fafafa;
-  --color-text-muted:   #a1a1aa;
-  --color-nav-bg:       rgba(9,9,11,0.80);
-  --color-nav-text:     #fafafa;
-  --color-border:       rgba(255,255,255,0.06);
-  --color-shadow:       rgba(0,0,0,0.55);
-  --color-footer-bg:    #050507;
-  --color-footer-wave:  #09090b;
+  --color-bg:           #fbf8ff;
+  --color-surface:      rgba(255,255,255,0.86);
+  --color-primary:      #7c3aed;
+  --color-primary-dark: #5b21b6;
+  --color-accent:       #14b8a6;
+  --color-text:         #24133f;
+  --color-text-muted:   #6d5d83;
+  --color-nav-bg:       rgba(255,255,255,0.82);
+  --color-nav-text:     #24133f;
+  --color-border:       rgba(124,58,237,0.16);
+  --color-shadow:       rgba(88,28,135,0.12);
+  --color-footer-bg:    #f1e9ff;
+  --color-footer-wave:  #fbf8ff;
 
   --font-heading: 'Inter', sans-serif;
   --font-body:    'Inter', sans-serif;
   --font-nav:     'Inter', sans-serif;
 
   --radius-sm: 8px; --radius-md: 12px; --radius-lg: 20px;
-  --glass-bg:     rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.08);
+  --glass-bg:     rgba(255,255,255,0.74);
+  --glass-border: rgba(124,58,237,0.16);
   --glass-blur:   20px;
 
   --hero-title-size:    clamp(2.4rem, 6vw, 4.5rem);

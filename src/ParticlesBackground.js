@@ -1,43 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useTheme } from './ThemeContext';
 
-/* ─── Dark starfield (BAC+5) ────────────────────────────────── */
-const Starfield = ({ canvasRef }) => {
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    let animId;
-
-    const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const stars = Array.from({ length: 160 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.1 + 0.2,
-      alpha: Math.random() * 0.5 + 0.15,
-      speed: Math.random() * 0.3 + 0.05,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach(s => {
-        s.y -= s.speed;
-        if (s.y < -2) { s.y = canvas.height + 2; s.x = Math.random() * canvas.width; }
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200,190,255,${s.alpha})`;
-        ctx.fill();
-      });
-      animId = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize); };
-  }, [canvasRef]);
-  return null;
-};
-
 /* ─── Light gradient mesh (Actuellement) ────────────────────── */
 const GradientMesh = ({ canvasRef }) => {
   useEffect(() => {
@@ -97,7 +60,6 @@ const ParticlesBackground = () => {
         ref={canvasRef}
         style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
       />
-      {version === 'bac5'    && <Starfield    canvasRef={canvasRef} />}
       {version === 'current' && <GradientMesh canvasRef={canvasRef} />}
     </>
   );

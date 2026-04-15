@@ -92,7 +92,7 @@ const AppContent = () => {
 
   return (
     <div className="app-wrapper">
-      {(version === 'bac5' || version === 'current') && <ParticlesBackground />}
+      {version === 'current' && <ParticlesBackground />}
 
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -101,15 +101,35 @@ const AppContent = () => {
           <Route path="/" element={
             <div className="home-page">
               <div className="home">
-                <div className="home-content">
-                  <h1 id="autotext">Julian LEROY, développeur Fullstack</h1>
-                  <p className="fade-in slogan">
-                    <i>Construisons ensemble l'avenir numérique !</i>
-                  </p>
-                  <div className="cta-buttons">
-                    <Link to="/cv"           className="cta-button">Voir mon CV</Link>
-                    <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
+                <div className={`home-content ${version === 'current' ? 'home-content--current' : ''}`}>
+                  <div className="hero-copy">
+                    {version === 'current' && <p className="hero-kicker">Portfolio 2025 / Fullstack</p>}
+                    <h1 id="autotext">Julian LEROY, développeur Fullstack</h1>
+                    <p className="fade-in slogan">
+                      <i>Construisons ensemble l'avenir numérique !</i>
+                    </p>
+                    <div className="cta-buttons">
+                      <Link to="/cv"           className="cta-button">Voir mon CV</Link>
+                      <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
+                    </div>
                   </div>
+                  {version === 'current' && (
+                    <div className="hero-dashboard" aria-hidden="true">
+                      <div className="hero-dashboard__top">
+                        <span>Disponibilité</span>
+                        <strong>Actif</strong>
+                      </div>
+                      <div className="hero-dashboard__grid">
+                        <span>React</span>
+                        <span>Node</span>
+                        <span>UX</span>
+                        <span>API</span>
+                      </div>
+                      <div className="hero-dashboard__meter">
+                        <span />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <Footer />
