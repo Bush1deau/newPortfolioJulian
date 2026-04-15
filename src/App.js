@@ -92,7 +92,7 @@ const AppContent = () => {
 
   return (
     <div className="app-wrapper">
-      {version === 'current' && <ParticlesBackground />}
+      {(version === 'bac5' || version === 'current') && <ParticlesBackground />}
 
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
