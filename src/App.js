@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { ThemeProvider, useTheme } from './ThemeContext';
+import VersionSwitcher from './VersionSwitcher';
+import ParticlesBackground from './ParticlesBackground';
 import './index.css';
 import Cv from './Cv';
 import Realisations from './Realisations';
@@ -7,51 +10,48 @@ import About from './About';
 import Contact from './Contact';
 import Footer from './Footer';
 
-const NavLink = ({ to, text, navLinkStyle, navLinkHoverStyle, onClick }) => (
-  <Link
-    to={to}
-    style={navLinkStyle}
-    onMouseOver={(e) => {
-      e.target.style.backgroundColor = navLinkHoverStyle.backgroundColor;
-      e.target.style.color = navLinkHoverStyle.color;
-    }}
-    onFocus={(e) => {
-      e.target.style.backgroundColor = navLinkHoverStyle.backgroundColor;
-      e.target.style.color = navLinkHoverStyle.color;
-    }}
-    onMouseOut={(e) => {
-      e.target.style.backgroundColor = '';
-      e.target.style.color = navLinkStyle.color;
-    }}
-    onBlur={(e) => {
-      e.target.style.backgroundColor = '';
-      e.target.style.color = navLinkStyle.color;
-    }}
-    onClick={onClick} // Ferme le menu au clic
-  >
-    {text}
-  </Link>
-);
+/* ─── Nav link ──────────────────────────────────────────────── */
+const NavLink = ({ to, text, onClick }) => {
+  const { version } = useTheme();
 
-const Navigation = ({ menuOpen, setMenuOpen }) => {
-  const location = useLocation(); // Hook utilisé ici
-
-  useEffect(() => {
-    setMenuOpen(false); // Ferme le menu lors d'une navigation
-  }, [location, setMenuOpen]);
-
-  const navLinkStyle = {
+  const base = {
     textDecoration: 'none',
-    color: 'white',
+    color: 'var(--color-nav-text)',
     padding: '10px 15px',
-    fontWeight: 'bold',
-    transition: 'background-color 0.3s, color 0.3s, transform 0.3s',
+    fontWeight: '600',
+    transition: 'background-color 0.3s, color 0.3s',
+    fontFamily: 'var(--font-body)',
+    letterSpacing: version === 'current' ? '0.06em' : undefined,
+    fontSize:      version === 'current' ? '0.85rem' : undefined,
+    textTransform: version === 'current' ? 'uppercase' : undefined,
   };
 
-  const navLinkHoverStyle = {
-    backgroundColor: '#0f5c6b',
-    color: 'white',
-  };
+  return (
+    <Link
+      to={to}
+      style={base}
+      onMouseOver={e => { e.target.style.opacity = '0.7'; }}
+      onMouseOut={e  => { e.target.style.opacity = '1'; }}
+      onClick={onClick}
+    >
+      {text}
+    </Link>
+  );
+};
+
+/* ─── Navigation ────────────────────────────────────────────── */
+const Navigation = ({ menuOpen, setMenuOpen }) => {
+  const location = useLocation();
+
+  React.useEffect(() => { setMenuOpen(false); }, [location, setMenuOpen]);
+
+  const links = [
+    { to: '/',            text: 'Accueil' },
+    { to: '/cv',          text: 'Mon CV' },
+    { to: '/realisations',text: 'Mes réalisations' },
+    { to: '/about',       text: 'A propos de moi' },
+    { to: '/contact',     text: 'Contact' },
+  ];
 
   return (
     <>
@@ -60,53 +60,54 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px',
-        backgroundColor: '#178ca4',
-        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 2px 8px var(--color-shadow)',
       }}>
         <div className="nav-links">
-          <NavLink to="/" text="Accueil" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
-          <NavLink to="/cv" text="Mon CV" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
-          <NavLink to="/realisations" text="Mes réalisations" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
-          <NavLink to="/about" text="A propos de moi" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
-          <NavLink to="/contact" text="Contact" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} />
+          {links.map(l => <NavLink key={l.to} {...l} />)}
         </div>
-        <button className={`burger-menu ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className={`burger-menu ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(o => !o)}
+          style={{ color: 'var(--color-nav-text)' }}
+        >
           &#9776;
         </button>
       </nav>
 
-      {/* Burger Menu */}
       <div className={`burger-nav ${menuOpen ? 'open' : ''}`}>
-        <NavLink to="/" text="Accueil" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
-        <NavLink to="/cv" text="Mon CV" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
-        <NavLink to="/realisations" text="Mes réalisations" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
-        <NavLink to="/about" text="A propos de moi" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
-        <NavLink to="/contact" text="Contact" navLinkStyle={navLinkStyle} navLinkHoverStyle={navLinkHoverStyle} onClick={() => setMenuOpen(false)} />
+        {links.map(l => (
+          <NavLink key={l.to} {...l} onClick={() => setMenuOpen(false)} />
+        ))}
       </div>
     </>
   );
 };
 
+/* ─── App content ───────────────────────────────────────────── */
 const AppContent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { version } = useTheme();
   const isHome = location.pathname === '/';
 
   return (
     <div className="app-wrapper">
+      {version === 'current' && <ParticlesBackground />}
+
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+
       <main className="main-content">
         <Routes>
           <Route path="/" element={
             <div className="home-page">
               <div className="home">
                 <div className="home-content">
-                  <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
+                  <h1 id="autotext">Julian LEROY, développeur Fullstack</h1>
                   <p className="fade-in slogan">
                     <i>Construisons ensemble l'avenir numérique !</i>
                   </p>
                   <div className="cta-buttons">
-                    <Link to="/cv" className="cta-button">Voir mon CV</Link>
+                    <Link to="/cv"           className="cta-button">Voir mon CV</Link>
                     <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
                   </div>
                 </div>
@@ -114,21 +115,27 @@ const AppContent = () => {
               <Footer />
             </div>
           } />
-          <Route path="/cv" element={<Cv />} />
+          <Route path="/cv"           element={<Cv />} />
           <Route path="/realisations" element={<Realisations />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/about"        element={<About />} />
+          <Route path="/contact"      element={<Contact />} />
         </Routes>
       </main>
+
       {!isHome && <Footer />}
+
+      <VersionSwitcher />
     </div>
   );
 };
 
+/* ─── Root ──────────────────────────────────────────────────── */
 const App = () => (
-  <Router>
-    <AppContent />
-  </Router>
+  <ThemeProvider>
+    <Router>
+      <AppContent />
+    </Router>
+  </ThemeProvider>
 );
 
 export default App;
