@@ -87,39 +87,44 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
   );
 };
 
-const App = () => {
+const AppContent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
-    <Router>
-      <div className="app-wrapper">
-        <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={
-              <div className="home">
-                <div className="home-content">
-                  <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
-                  <p className="fade-in slogan">
-                    <i>Construisons ensemble l'avenir numérique !</i>
-                  </p>
-                  <div className="cta-buttons">
-                    <Link to="/cv" className="cta-button">Voir mon CV</Link>
-                    <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
-                  </div>
+    <div className="app-wrapper">
+      <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={
+            <div className="home">
+              <div className="home-content">
+                <h1 id='autotext'>Julian LEROY, développeur Fullstack</h1>
+                <p className="fade-in slogan">
+                  <i>Construisons ensemble l'avenir numérique !</i>
+                </p>
+                <div className="cta-buttons">
+                  <Link to="/cv" className="cta-button">Voir mon CV</Link>
+                  <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
                 </div>
               </div>
-            } />
-            <Route path="/cv" element={<Cv />} />
-            <Route path="/realisations" element={<Realisations />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+            </div>
+          } />
+          <Route path="/cv" element={<Cv />} />
+          <Route path="/realisations" element={<Realisations />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
+      {location.pathname === '/' && <Footer />}
+    </div>
   );
 };
+
+const App = () => (
+  <Router>
+    <AppContent />
+  </Router>
+);
 
 export default App;
