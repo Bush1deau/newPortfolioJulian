@@ -1,175 +1,135 @@
-/* ═══════════════════════════════════════════════════════════════
-   THEMES — Variables CSS par version
-   ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   THEMES
+═══════════════════════════════════════════════════════════ */
 
-/* ─── BAC+2 (2020-2022) : Les débuts ────────────────────────── */
+/* ─── BAC+2 — Les débuts (inchangé, intentionnellement simple) */
 :root,
 [data-theme="bac2"] {
-  --color-bg:          #f4f4f4;
-  --color-surface:     #ffffff;
-  --color-primary:     #178ca4;
-  --color-primary-dark:#0f5c6b;
-  --color-accent:      #18b7be;
-  --color-text:        #333333;
-  --color-text-muted:  #666666;
-  --color-nav-bg:      #178ca4;
-  --color-nav-text:    #ffffff;
-  --color-border:      #dddddd;
-  --color-shadow:      rgba(0,0,0,0.1);
-  --color-footer-bg:   #178ca4;
-  --color-footer-wave: #f4f4f4;
+  --color-bg:           #f4f4f4;
+  --color-surface:      #ffffff;
+  --color-primary:      #178ca4;
+  --color-primary-dark: #0f5c6b;
+  --color-accent:       #18b7be;
+  --color-text:         #333333;
+  --color-text-muted:   #666666;
+  --color-nav-bg:       #178ca4;
+  --color-nav-text:     #ffffff;
+  --color-border:       #dddddd;
+  --color-shadow:       rgba(0,0,0,0.10);
+  --color-footer-bg:    #178ca4;
+  --color-footer-wave:  #f4f4f4;
 
   --font-heading: 'Source Code Pro', monospace;
   --font-body:    'Jost', sans-serif;
+  --font-nav:     'Jost', sans-serif;
 
   --radius-sm:  4px;
   --radius-md:  6px;
   --radius-lg:  8px;
 
-  --transition-fast: 0.2s ease;
-  --transition-med:  0.3s ease;
-
+  --nav-height: 56px;
+  --section-padding: 5% 10%;
   --hero-title-size:    clamp(1.4rem, 3vw, 2.2rem);
-  --hero-subtitle-size: clamp(1rem, 2vw, 1.4rem);
-
-  /* Switcher */
-  --switcher-bg:         #178ca4;
-  --switcher-hover:      #0f5c6b;
-  --switcher-color:      #ffffff;
-  --switcher-panel-bg:   #ffffff;
-  --switcher-active:     #178ca4;
-  --switcher-dot:        #cccccc;
-  --switcher-line:       #e0e0e0;
-  --switcher-text:       #222222;
-  --switcher-years:      #888888;
-  --switcher-desc:       #aaaaaa;
-  --switcher-title-color:#888888;
+  --hero-subtitle-size: clamp(1rem,  2vw, 1.4rem);
 }
 
-/* ─── BAC+3 (2022-2023) : En progression ────────────────────── */
+/* ─── BAC+3 — En progression ────────────────────────────── */
 [data-theme="bac3"] {
-  --color-bg:          #fafaf8;
-  --color-surface:     #ffffff;
-  --color-primary:     #2563eb;
-  --color-primary-dark:#1d4ed8;
-  --color-accent:      #06b6d4;
-  --color-text:        #1e293b;
-  --color-text-muted:  #64748b;
-  --color-nav-bg:      #1e293b;
-  --color-nav-text:    #f1f5f9;
-  --color-border:      #e2e8f0;
-  --color-shadow:      rgba(30,41,59,0.08);
-  --color-footer-bg:   #1e293b;
-  --color-footer-wave: #fafaf8;
+  --color-bg:           #f8fafc;
+  --color-surface:      #ffffff;
+  --color-primary:      #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-accent:       #06b6d4;
+  --color-text:         #0f172a;
+  --color-text-muted:   #475569;
+  --color-nav-bg:       #0f172a;
+  --color-nav-text:     #f1f5f9;
+  --color-border:       #e2e8f0;
+  --color-shadow:       rgba(15,23,42,0.08);
+  --color-footer-bg:    #0f172a;
+  --color-footer-wave:  #f8fafc;
 
-  --font-heading: 'Inter', 'Jost', sans-serif;
-  --font-body:    'Inter', 'Jost', sans-serif;
-
-  --radius-sm:  6px;
-  --radius-md:  10px;
-  --radius-lg:  16px;
-
-  --hero-title-size:    clamp(1.8rem, 4vw, 3rem);
-  --hero-subtitle-size: clamp(1rem, 2vw, 1.3rem);
-
-  --switcher-bg:         #2563eb;
-  --switcher-hover:      #1d4ed8;
-  --switcher-color:      #ffffff;
-  --switcher-panel-bg:   #ffffff;
-  --switcher-active:     #2563eb;
-  --switcher-dot:        #cbd5e1;
-  --switcher-line:       #e2e8f0;
-  --switcher-text:       #1e293b;
-  --switcher-years:      #64748b;
-  --switcher-desc:       #94a3b8;
-  --switcher-title-color:#94a3b8;
-}
-
-/* ─── BAC+5 (2023-2024) : Maîtrise ──────────────────────────── */
-[data-theme="bac5"] {
-  --color-bg:          #0f172a;
-  --color-surface:     rgba(255,255,255,0.05);
-  --color-primary:     #818cf8;
-  --color-primary-dark:#6366f1;
-  --color-accent:      #38bdf8;
-  --color-text:        #e2e8f0;
-  --color-text-muted:  #94a3b8;
-  --color-nav-bg:      rgba(15,23,42,0.85);
-  --color-nav-text:    #e2e8f0;
-  --color-border:      rgba(255,255,255,0.08);
-  --color-shadow:      rgba(0,0,0,0.4);
-  --color-footer-bg:   #0a0f1e;
-  --color-footer-wave: #0f172a;
-
-  --font-heading: 'Inter', 'Jost', sans-serif;
-  --font-body:    'Inter', 'Jost', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-nav:     'Inter', sans-serif;
 
   --radius-sm:  8px;
   --radius-md:  12px;
   --radius-lg:  20px;
 
-  --glass-bg:     rgba(255,255,255,0.05);
-  --glass-border: rgba(255,255,255,0.10);
-  --glass-blur:   16px;
-
-  --hero-title-size:    clamp(2rem, 5vw, 3.8rem);
-  --hero-subtitle-size: clamp(1rem, 2vw, 1.4rem);
-
-  --switcher-bg:         rgba(129,140,248,0.85);
-  --switcher-hover:      #6366f1;
-  --switcher-color:      #ffffff;
-  --switcher-panel-bg:   #1e293b;
-  --switcher-active:     #818cf8;
-  --switcher-dot:        rgba(255,255,255,0.2);
-  --switcher-line:       rgba(255,255,255,0.08);
-  --switcher-text:       #e2e8f0;
-  --switcher-years:      #94a3b8;
-  --switcher-desc:       #64748b;
-  --switcher-title-color:#64748b;
+  --nav-height: 60px;
+  --section-padding: 4% 8%;
+  --hero-title-size:    clamp(2rem,  5vw, 3.5rem);
+  --hero-subtitle-size: clamp(1rem,  2vw, 1.3rem);
 }
 
-/* ─── Actuellement (2024-) : Excellence ─────────────────────── */
-[data-theme="current"] {
-  --color-bg:          #06060f;
-  --color-surface:     rgba(255,255,255,0.04);
-  --color-primary:     #c8a96e;
-  --color-primary-dark:#a07840;
-  --color-accent:      #4fc3f7;
-  --color-text:        #f0e6d3;
-  --color-text-muted:  rgba(240,230,211,0.55);
-  --color-nav-bg:      rgba(6,6,15,0.75);
-  --color-nav-text:    #f0e6d3;
-  --color-border:      rgba(200,169,110,0.2);
-  --color-shadow:      rgba(0,0,0,0.6);
-  --color-footer-bg:   #06060f;
-  --color-footer-wave: #06060f;
+/* ─── BAC+5 — Maîtrise ──────────────────────────────────── */
+[data-theme="bac5"] {
+  --color-bg:           #0d1117;
+  --color-surface:      rgba(255,255,255,0.05);
+  --color-primary:      #a78bfa;
+  --color-primary-dark: #7c3aed;
+  --color-accent:       #38bdf8;
+  --color-text:         #e2e8f0;
+  --color-text-muted:   #94a3b8;
+  --color-nav-bg:       rgba(13,17,23,0.80);
+  --color-nav-text:     #e2e8f0;
+  --color-border:       rgba(255,255,255,0.07);
+  --color-shadow:       rgba(0,0,0,0.45);
+  --color-footer-bg:    #080c12;
+  --color-footer-wave:  #0d1117;
 
-  --font-heading: 'Cinzel', 'Georgia', serif;
+  --font-heading: 'Inter', sans-serif;
   --font-body:    'Inter', sans-serif;
+  --font-nav:     'Inter', sans-serif;
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  24px;
+
+  --glass-bg:     rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.09);
+  --glass-blur:   18px;
+
+  --nav-height: 64px;
+  --section-padding: 4% 8%;
+  --hero-title-size:    clamp(2.2rem, 6vw, 4.5rem);
+  --hero-subtitle-size: clamp(1rem,   2vw, 1.4rem);
+}
+
+/* ─── Actuellement — Excellence ─────────────────────────── */
+[data-theme="current"] {
+  --color-bg:           #06060f;
+  --color-surface:      rgba(255,255,255,0.03);
+  --color-primary:      #c8a96e;
+  --color-primary-dark: #a07840;
+  --color-accent:       #4fc3f7;
+  --color-text:         #f0e6d3;
+  --color-text-muted:   rgba(240,230,211,0.50);
+  --color-nav-bg:       rgba(6,6,15,0.70);
+  --color-nav-text:     #f0e6d3;
+  --color-border:       rgba(200,169,110,0.18);
+  --color-shadow:       rgba(0,0,0,0.65);
+  --color-footer-bg:    #06060f;
+  --color-footer-wave:  #06060f;
+
+  --font-heading: 'Cinzel', serif;
+  --font-body:    'Inter', sans-serif;
+  --font-nav:     'Inter', sans-serif;
 
   --radius-sm:  6px;
   --radius-md:  12px;
   --radius-lg:  24px;
 
   --glass-bg:     rgba(200,169,110,0.04);
-  --glass-border: rgba(200,169,110,0.15);
+  --glass-border: rgba(200,169,110,0.14);
   --glass-blur:   24px;
 
-  --glow-gold:  0 0 20px rgba(200,169,110,0.3), 0 0 60px rgba(200,169,110,0.1);
-  --glow-cyan:  0 0 20px rgba(79,195,247,0.3);
+  --glow-gold:    0 0 24px rgba(200,169,110,0.35), 0 0 60px rgba(200,169,110,0.10);
+  --glow-cyan:    0 0 20px rgba(79,195,247,0.30);
 
-  --hero-title-size:    clamp(2.2rem, 6vw, 5rem);
-  --hero-subtitle-size: clamp(1rem, 2vw, 1.5rem);
-
-  --switcher-bg:         rgba(200,169,110,0.9);
-  --switcher-hover:      #a07840;
-  --switcher-color:      #06060f;
-  --switcher-panel-bg:   rgba(10,10,20,0.95);
-  --switcher-active:     #c8a96e;
-  --switcher-dot:        rgba(200,169,110,0.3);
-  --switcher-line:       rgba(200,169,110,0.15);
-  --switcher-text:       #f0e6d3;
-  --switcher-years:      rgba(240,230,211,0.55);
-  --switcher-desc:       rgba(240,230,211,0.35);
-  --switcher-title-color:rgba(200,169,110,0.6);
+  --nav-height: 64px;
+  --section-padding: 4% 8%;
+  --hero-title-size:    clamp(2.4rem, 7vw, 5.5rem);
+  --hero-subtitle-size: clamp(1rem,   2vw, 1.5rem);
 }

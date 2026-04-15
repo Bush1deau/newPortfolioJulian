@@ -2,157 +2,64 @@ import React, { useState, useRef } from 'react';
 import emailjs from 'emailjs-com';
 
 const Contact = () => {
-  // Référence pour le formulaire
   const form = useRef();
-
-  // État pour le statut du message envoyé
   const [status, setStatus] = useState('');
 
-  // Fonction pour envoyer le formulaire avec EmailJS
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-
-    // Envoi du formulaire via EmailJS
     emailjs
-      .sendForm(
-        'service_3f1z8l8', // ID de ton service EmailJS
-        'template_1ffov7o', // ID de ton template
-        form.current, // Référence au formulaire HTML
-        'M9rM_-UFFzwwkCA7O' // Ta clé publique (trouvée dans ton compte EmailJS)
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setStatus('Message envoyé avec succès !');
-        },
-        (error) => {
-          console.log(error.text);
-          setStatus('Une erreur est survenue. Veuillez réessayer.');
-        }
-      );
+      .sendForm('service_3f1z8l8', 'template_1ffov7o', form.current, 'M9rM_-UFFzwwkCA7O')
+      .then(() => setStatus('Message envoyé avec succès !'))
+      .catch(() => setStatus('Une erreur est survenue. Veuillez réessayer.'));
   };
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '10%' }}>
-      <h1 className="fade-in" style={{ fontSize: '3rem', color: '#2c3e50', fontFamily: 'Jost' }}>
-        Me contacter
-      </h1>
+    <div className="contact-wrapper fade-in">
+      <h1 className="page-title">Me contacter</h1>
 
-      {/* Informations de contact */}
-      <div className="contact-container">
-      {/* Première ligne (Numéro de téléphone et email) */}
       <div className="contact-info">
         <div className="contact-item">
-          <img src="appel.png" alt="Phone Icon" className="contact-icon" />
-          <p>Tél: 07 81 86 81 57</p>
+          <img src="appel.png" alt="Téléphone" className="contact-icon" />
+          <p>07 81 86 81 57</p>
         </div>
-
         <div className="contact-item">
-          <img src="email.png" alt="Email Icon" className="contact-icon" />
-          <p>Email: julianleroy3@gmail.com</p>
+          <img src="email.png" alt="Email" className="contact-icon" />
+          <p>julianleroy3@gmail.com</p>
         </div>
-      </div>
-
-      {/* Deuxième ligne (LinkedIn et GitHub) */}
-      <div className="contact-info">
         <div className="contact-item">
           <a href="https://www.linkedin.com/in/julian-leroy" target="_blank" rel="noopener noreferrer">
-            <img src="linkedin.png" alt="LinkedIn Icon" className="contact-icon" />
+            <img src="linkedin.png" alt="LinkedIn" className="contact-icon" />
           </a>
-          <p>LinkedIn: Julian Leroy</p>
+          <p>Julian Leroy</p>
         </div>
-
         <div className="contact-item">
           <a href="https://github.com/Bush1deau" target="_blank" rel="noopener noreferrer">
-            <img src="github.png" alt="GitHub Icon" className="contact-icon" />
+            <img src="github.png" alt="GitHub" className="contact-icon" />
           </a>
-          <p>GitHub: Bush1deau</p>
+          <p>Bush1deau</p>
         </div>
       </div>
-    </div>
 
-      {/* Formulaire de contact */}
-      <div style={{ marginTop: '50px', fontFamily: 'Jost' }}>
+      <div className="contact-form-wrapper">
         <h2>Envoyer un message</h2>
-        <form
-          ref={form} // Attache le formulaire à la référence
-          onSubmit={handleSubmit}
-          style={{ textAlign: 'left', width: '50%', margin: '0 auto' }}
-        >
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ fontSize: '1.2rem' }}>Nom</label>
-            <input
-              type="text"
-              name="name"
-              required
-              style={{
-                width: '100%',
-                padding: '10px',
-                fontSize: '1rem',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-              }}
-            />
+        <form ref={form} onSubmit={handleSubmit} className="contact-form">
+          <div className="form-group">
+            <label>Nom</label>
+            <input type="text" name="name" required />
           </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ fontSize: '1.2rem' }}>Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              style={{
-                width: '100%',
-                padding: '10px',
-                fontSize: '1rem',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-              }}
-            />
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required />
           </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ fontSize: '1.2rem' }}>Message</label>
-            <textarea
-              name="message"
-              required
-              rows="4"
-              style={{
-                width: '100%',
-                padding: '10px',
-                fontSize: '1rem',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-              }}
-            />
+          <div className="form-group">
+            <label>Message</label>
+            <textarea name="message" required rows="4" />
           </div>
-
-          <button
-            type="submit"
-            style={{
-              backgroundColor: '#178ca4',
-              color: '#fff',
-              padding: '10px 20px',
-              fontSize: '1.2rem',
-              border: 'none',
-              borderRadius: '5px',
-              fontFamily: 'Jost',
-              marginBottom: '4rem',
-            }}
-          >
-            Envoyer
-          </button>
+          <button type="submit" className="submit-btn">Envoyer</button>
         </form>
 
-        {/* Affichage du statut de l'envoi du message */}
         {status && (
-          <p
-            style={{
-              marginTop: '20px',
-              fontSize: '1.2rem',
-              color: status.includes('succès') ? 'green' : 'red',
-            }}
-          >
+          <p style={{ marginTop: 16, color: status.includes('succès') ? '#4ade80' : '#f87171' }}>
             {status}
           </p>
         )}

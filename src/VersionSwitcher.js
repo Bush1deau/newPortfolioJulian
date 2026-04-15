@@ -7,39 +7,51 @@ const VersionSwitcher = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={`version-switcher ${open ? 'open' : ''}`}>
-      <button
-        className="version-switcher__toggle"
-        onClick={() => setOpen(o => !o)}
-        aria-label="Changer de version"
-      >
-        <span className="version-switcher__toggle-icon">
-          {open ? '×' : '</>'}
-        </span>
-        {!open && <span className="version-switcher__toggle-label">Version</span>}
-      </button>
+    <>
+      {open && <div className="vs-backdrop" onClick={() => setOpen(false)} />}
 
-      <div className="version-switcher__panel">
-        <p className="version-switcher__title">Mon évolution</p>
-        <div className="version-switcher__timeline">
-          {VERSIONS.map((v, i) => (
-            <button
-              key={v.id}
-              className={`version-switcher__item ${version === v.id ? 'active' : ''}`}
-              onClick={() => { setVersion(v.id); setOpen(false); }}
-            >
-              <span className="version-switcher__dot" />
-              {i < VERSIONS.length - 1 && <span className="version-switcher__line" />}
-              <div className="version-switcher__info">
-                <span className="version-switcher__version-label">{v.label}</span>
-                <span className="version-switcher__years">{v.years}</span>
-                <span className="version-switcher__desc">{v.description}</span>
-              </div>
-            </button>
-          ))}
+      <div className="vs-root">
+        {/* Panel */}
+        <div className={`vs-panel ${open ? 'vs-panel--open' : ''}`}>
+          <p className="vs-panel-title">Mon portfolio</p>
+          <div className="vs-timeline">
+            {VERSIONS.map((v, i) => (
+              <button
+                key={v.id}
+                className={`vs-item ${version === v.id ? 'vs-item--active' : ''}`}
+                onClick={() => { setVersion(v.id); setOpen(false); }}
+              >
+                <div className="vs-track">
+                  <span className="vs-dot" />
+                  {i < VERSIONS.length - 1 && <span className="vs-line" />}
+                </div>
+                <div className="vs-info">
+                  <span className="vs-label">{v.label}</span>
+                  <span className="vs-years">{v.years}</span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Toggle strip */}
+        <button
+          className={`vs-toggle ${open ? 'vs-toggle--open' : ''}`}
+          onClick={() => setOpen(o => !o)}
+          aria-label="Changer de version"
+        >
+          <span className="vs-toggle-dots">
+            {VERSIONS.map(v => (
+              <span
+                key={v.id}
+                className={`vs-toggle-pip ${version === v.id ? 'active' : ''}`}
+              />
+            ))}
+          </span>
+          <span className="vs-toggle-word">VERSION</span>
+        </button>
       </div>
-    </div>
+    </>
   );
 };
 
