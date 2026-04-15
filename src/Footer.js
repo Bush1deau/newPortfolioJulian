@@ -1,54 +1,30 @@
 import React from 'react';
 import './index.css';
 
-const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-const bubbleCount = isMobile ? 128 : 60;
-
-const Footer = () => {
-  return (
-    <div className="main">
-      <div className="footer">
-        <div className="bubbles">
-          {Array.from({ length: bubbleCount }).map((_, i) => (
-            <div
-              key={i}
-              className="bubble"
-              style={{
-                "--size": isMobile
-                  ? `${1 + Math.random() * 2}rem`
-                  : `${0.2 + Math.random() * 0.4}rem`,
-                "--distance": isMobile
-                  ? `${2 + Math.random() * 2}rem`
-                  : `${0.4 + Math.random() * 0.4}rem`,
-                "--position": `${-5 + Math.random() * 110}%`,
-                "--time": `${2 + Math.random() * 2}s`,
-                "--delay": `${-1 * (2 + Math.random() * 2)}s`,
-              }}
-            />
-          ))}
-        </div>
-        <div className="content">
-          <div className="footer-text">
-            <p className="by-julian">by Julian.</p>
-            <p className="rights-reserved">Tout droit réservé</p>
-          </div>
-        </div>
-        <svg style={{ position: "fixed", top: "100vh" }}>
-          <defs>
-            <filter id="blob">
-              <feGaussianBlur in="SourceGraphic" stdDeviation={isMobile ? 10 : 5} result="blur" />
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                result="blob"
-              />
-            </filter>
-          </defs>
-        </svg>
-      </div>
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer-wave">
+      <svg
+        viewBox="0 0 1440 50"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,25 C180,50 360,0 540,25 C720,50 900,0 1080,25 C1260,50 1440,0 1440,25 L1440,50 L0,50 Z"
+          fill="#178ca4"
+        />
+        <path
+          d="M0,35 C180,10 360,50 540,35 C720,10 900,50 1080,35 C1260,10 1440,50 1440,35 L1440,50 L0,50 Z"
+          fill="#178ca4"
+          opacity="0.5"
+        />
+      </svg>
     </div>
-  );
-};
+    <div className="footer-content">
+      <p className="by-julian">by Julian.</p>
+      <p className="rights-reserved">Tout droit réservé</p>
+    </div>
+  </footer>
+);
 
 export default Footer;
