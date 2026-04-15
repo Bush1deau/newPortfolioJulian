@@ -19,10 +19,6 @@ export const ThemeProvider = ({ children }) => {
     document.documentElement.setAttribute('data-theme', version);
   }, [version]);
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', version);
-  }, []);
-
   return (
     <ThemeContext.Provider value={{ version, setVersion }}>
       {children}
