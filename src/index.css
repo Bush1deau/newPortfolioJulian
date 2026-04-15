@@ -454,10 +454,9 @@ body, html {
   display:grid;
   position: relative;
   grid-area: footer;
-  min-height:11rem;
-  padding-top: 50px;
+  min-height: 6rem;
+  padding-top: 30px;
   .bubbles {
-    padding-top: 50px;
       position: absolute;
       top:0;
       left:0;
@@ -553,10 +552,10 @@ body, html {
 }
 @keyframes bubble-move {
 0% {
-  bottom:-4rem;
+  bottom:-2rem;
 }
 100% {
-  bottom:var(--distance, 5rem);
+  bottom:var(--distance, 3rem);
 }
 }
 
