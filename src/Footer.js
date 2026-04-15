@@ -2,23 +2,24 @@ import React from 'react';
 import './index.css';
 
 const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+const bubbleCount = isMobile ? 128 : 60;
 
 const Footer = () => {
   return (
     <div className="main">
       <div className="footer">
         <div className="bubbles">
-          {Array.from({ length: 128 }).map((_, i) => (
+          {Array.from({ length: bubbleCount }).map((_, i) => (
             <div
               key={i}
               className="bubble"
               style={{
                 "--size": isMobile
                   ? `${1 + Math.random() * 2}rem`
-                  : `${0.5 + Math.random() * 1}rem`,
+                  : `${0.2 + Math.random() * 0.4}rem`,
                 "--distance": isMobile
                   ? `${2 + Math.random() * 2}rem`
-                  : `${1 + Math.random() * 1}rem`,
+                  : `${0.4 + Math.random() * 0.4}rem`,
                 "--position": `${-5 + Math.random() * 110}%`,
                 "--time": `${2 + Math.random() * 2}s`,
                 "--delay": `${-1 * (2 + Math.random() * 2)}s`,
@@ -35,7 +36,7 @@ const Footer = () => {
         <svg style={{ position: "fixed", top: "100vh" }}>
           <defs>
             <filter id="blob">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feGaussianBlur in="SourceGraphic" stdDeviation={isMobile ? 10 : 5} result="blur" />
               <feColorMatrix
                 in="blur"
                 mode="matrix"
