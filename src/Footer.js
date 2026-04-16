@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from './ThemeContext';
 import './index.css';
 
@@ -342,8 +343,7 @@ const Footer = () => {
         <>
           <WaveBac3 mouseRef={mouseRef} />
           <div className="footer-stage footer-stage--clean footer-stage--over">
-            <p className="footer-stage__name">Julian Leroy</p>
-            <p className="footer-stage__meta">Portfolio évolutif · BAC+3</p>
+            <p className="footer-stage__name">by Julian.</p>
           </div>
         </>
       )}
@@ -353,15 +353,10 @@ const Footer = () => {
         <>
           <WaveBac5 mouseRef={mouseRef} />
           <div className="footer-stage footer-stage--lab footer-stage--over">
-            <div>
-              <p className="footer-stage__eyebrow">Maîtrise</p>
-              <p className="footer-stage__name">Julian Leroy</p>
-            </div>
-            <div className="footer-lab-grid">
-              <span>Architecture</span>
-              <span>Produit</span>
-              <span>Expérience</span>
-            </div>
+            <p className="footer-stage__name">by Julian.</p>
+            <Link to="/contact" className="footer-cta footer-cta--bac5">
+              Me contacter
+            </Link>
           </div>
         </>
       )}
@@ -371,15 +366,10 @@ const Footer = () => {
         <>
           <WaveCurrent mouseRef={mouseRef} />
           <div className="footer-stage footer-stage--current footer-stage--over">
-            <div>
-              <p className="footer-stage__eyebrow">Actuellement</p>
-              <p className="footer-stage__name">Julian Leroy</p>
-            </div>
-            <div className="footer-current-panel">
-              <span>Fullstack</span>
-              <span>React</span>
-              <span>Node</span>
-            </div>
+            <p className="footer-stage__name">by Julian.</p>
+            <Link to="/contact" className="footer-cta footer-cta--current">
+              Me contacter
+            </Link>
           </div>
         </>
       )}
