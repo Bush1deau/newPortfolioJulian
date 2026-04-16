@@ -472,7 +472,7 @@ nav {
 }
 
 /* "by Julian." — readable over each wave background */
-.footer--bac3 .footer-stage__name  { color: #3b82f6; }
+.footer--bac3 .footer-stage__name  { color: rgba(255,255,255,0.90); }
 .footer--bac5 .footer-stage__name  { color: rgba(255,255,255,0.90); }
 .footer--current .footer-stage__name { color: rgba(255,255,255,0.90); }
 
