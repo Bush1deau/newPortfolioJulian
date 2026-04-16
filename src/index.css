@@ -471,10 +471,15 @@ nav {
   text-transform: uppercase;
 }
 
-/* Text colours — light page background, use theme text colours */
-.footer--bac3 .footer-stage__name,
-.footer--bac5 .footer-stage__name,
-.footer--current .footer-stage__name { color: var(--color-text); }
+/* "by Julian." — each theme gets its primary colour */
+.footer--bac3 .footer-stage__name { color: #3b82f6; }
+.footer--bac5 .footer-stage__name { color: #7c3aed; }
+.footer--current .footer-stage__name {
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .footer--bac3 .footer-stage__meta,
 .footer--bac5 .footer-stage__eyebrow,
