@@ -96,11 +96,11 @@ function WaveBac5({ mouseRef }) {
 
       const mouse = mouseRef.current;
 
-      // Three depth layers: back (slow/faint) → mid → front
+      // Three depth layers: back (subtle wash like bac3) → mid → front
       for (const [yFrac, amp, freq, phase, color, alpha] of [
-        [0.10, 6,  0.007, 3.5, '#5b21b6', 0.16],
-        [0.22, 14, 0.010, 0.8, '#7c3aed', 0.42],
-        [0.36, 9,  0.017, 1.9, '#7c3aed', 0.90],
+        [0.15, 18, 0.007, 3.5, '#7c3aed', 0.18],  // subtle top wash
+        [0.30, 12, 0.010, 0.8, '#7c3aed', 0.50],  // depth mid
+        [0.44, 8,  0.017, 1.9, '#7c3aed', 0.90],  // solid front
       ]) {
         ctx.beginPath();
         ctx.moveTo(0, H);
@@ -123,7 +123,7 @@ function WaveBac5({ mouseRef }) {
       // Spawn particles at front-wave crest near cursor
       if (mouse.on && Math.random() < 0.35) {
         const px = mouse.x + (Math.random() - 0.5) * 80;
-        const wy = H * 0.36 + Math.sin(px * 0.017 + t + 1.9) * 9;
+        const wy = H * 0.44 + Math.sin(px * 0.017 + t + 1.9) * 8;
         pts.current.push({
           x: px, y: wy,
           vx: (Math.random() - 0.5) * 0.7,
@@ -201,10 +201,10 @@ function WaveCurrent({ mouseRef }) {
       const gradA = buildGrad(248, 195); // background layers
       const gradB = buildGrad(246, 190); // front layer
 
-      // Background layers (no glow)
+      // Background layers — back uses solid colour so aurora doesn't tint the page bg
       for (const [yFrac, amp, freq, phase, fill, alpha] of [
-        [0.10, 6,  0.006, 4.0, gradA, 0.14],
-        [0.22, 13, 0.010, 0.6, gradA, 0.36],
+        [0.15, 16, 0.006, 4.0, '#4f46e5', 0.12],  // solid subtle wash
+        [0.30, 12, 0.010, 0.6, gradA,     0.40],  // aurora mid
       ]) {
         ctx.beginPath();
         ctx.moveTo(0, H);
@@ -226,7 +226,7 @@ function WaveCurrent({ mouseRef }) {
 
       // Front wave — collect crest points for the glow stroke
       {
-        const yFrac = 0.36, amp = 9, freq = 0.016, phase = 1.9;
+        const yFrac = 0.44, amp = 8, freq = 0.016, phase = 1.9;
         const cX = [], cY = [];
         ctx.beginPath();
         ctx.moveTo(0, H);
@@ -265,7 +265,7 @@ function WaveCurrent({ mouseRef }) {
       // Particles (same as BAC+5, indigo→cyan palette)
       if (mouse.on && Math.random() < 0.35) {
         const px = mouse.x + (Math.random() - 0.5) * 80;
-        const wy = H * 0.36 + Math.sin(px * 0.016 + t + 1.9) * 9;
+        const wy = H * 0.44 + Math.sin(px * 0.016 + t + 1.9) * 8;
         pts.current.push({
           x: px, y: wy,
           vx: (Math.random() - 0.5) * 0.7,
