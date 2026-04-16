@@ -31,9 +31,10 @@ function WaveBac3({ mouseRef }) {
     window.addEventListener('resize', onResize);
 
     (function loop() {
-      if (!ctx) { raf = requestAnimationFrame(loop); return; }
+      if (!ctx) { ctx = syncCanvas(cvs.current); raf = requestAnimationFrame(loop); return; }
       const W = cvs.current.offsetWidth;
       const H = cvs.current.offsetHeight;
+      if (!W || !H) { raf = requestAnimationFrame(loop); return; }
       ctx.clearRect(0, 0, W, H);
 
       ctx.fillStyle = '#0f172a';
@@ -90,9 +91,10 @@ function WaveBac5({ mouseRef }) {
     window.addEventListener('resize', onResize);
 
     (function loop() {
-      if (!ctx) { raf = requestAnimationFrame(loop); return; }
+      if (!ctx) { ctx = syncCanvas(cvs.current); raf = requestAnimationFrame(loop); return; }
       const W = cvs.current.offsetWidth;
       const H = cvs.current.offsetHeight;
+      if (!W || !H) { raf = requestAnimationFrame(loop); return; }
       ctx.clearRect(0, 0, W, H);
 
       ctx.fillStyle = '#0d0520';
@@ -183,9 +185,10 @@ function WaveCurrent({ mouseRef }) {
     window.addEventListener('resize', onResize);
 
     (function loop() {
-      if (!ctx) { raf = requestAnimationFrame(loop); return; }
+      if (!ctx) { ctx = syncCanvas(cvs.current); raf = requestAnimationFrame(loop); return; }
       const W = cvs.current.offsetWidth;
       const H = cvs.current.offsetHeight;
+      if (!W || !H) { raf = requestAnimationFrame(loop); return; }
       ctx.clearRect(0, 0, W, H);
 
       // Dark indigo background
