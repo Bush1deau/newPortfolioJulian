@@ -266,33 +266,51 @@ nav {
   display: inline-block;
   line-height: 1.2;
 }
+/* BAC+2 — thin bar, sharp step blink (base) */
 @keyframes blink {
   from, to { border-color: transparent; }
   50%       { border-color: var(--color-accent); }
 }
 
-/* BAC+3: bold, classic Inter */
+/* BAC+3 — same bar, accelerated rhythm */
 [data-theme="bac3"] #autotext {
   font-weight: 800; letter-spacing: -0.02em;
-  border-right-color: #3b82f6;
+  border-right: 0.15em solid #3b82f6;
+  animation: blink-bac3 0.55s step-end infinite;
+}
+@keyframes blink-bac3 {
+  from, to { border-color: transparent; }
+  50%       { border-color: #3b82f6; }
 }
 
-/* BAC+5: gradient violet→cyan */
+/* BAC+5 — thicker bar, smooth fade-in/out, violet glow */
 [data-theme="bac5"] #autotext {
   font-weight: 800; letter-spacing: -0.02em;
   background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
-  border-right: 0.12em solid #06b6d4;
+  border-right: 0.2em solid #8b5cf6;
+  animation: blink-bac5 1.0s ease-in-out infinite;
+}
+@keyframes blink-bac5 {
+  0%, 100% { border-color: transparent; }
+  40%, 60% { border-color: #8b5cf6; }
 }
 
-/* Actuellement: gradient indigo→cyan, very bold */
+/* Actuellement — thickest bar, aurora alternation indigo↔cyan */
 [data-theme="current"] #autotext {
   font-weight: 800; letter-spacing: -0.03em;
   background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
-  border-right: 0.12em solid #4f46e5;
+  border-right: 0.22em solid #4f46e5;
+  animation: blink-current 1.4s ease-in-out infinite;
+}
+@keyframes blink-current {
+  0%, 100% { border-color: transparent; }
+  15%, 35% { border-color: #4f46e5; }
+  50%       { border-color: transparent; }
+  65%, 85% { border-color: #06b6d4; }
 }
 
 /* ─── Slogan ── */
@@ -462,10 +480,11 @@ nav {
 .footer--bac5 .footer-stage__eyebrow,
 .footer--current .footer-stage__eyebrow { color: rgba(255,255,255,0.40); }
 
-/* Fallback bg (canvas paints over these immediately) */
-.footer--bac3  { background: #0f172a; }
-.footer--bac5  { background: #0d0520; }
-.footer--current { background: #08081e; }
+/* Footer background — canvas is transparent, CSS provides the base color
+   so any subpixel gap between canvas and footer edge is invisible */
+.footer--bac3    { background: #111827; }   /* matches --color-footer-bg */
+.footer--bac5    { background: #0d0520; }
+.footer--current { background: linear-gradient(to bottom, #08081e, #0d0a2c); }
 
 /* BAC+3 centred layout */
 .footer-stage--clean {

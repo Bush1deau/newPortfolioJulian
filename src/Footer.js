@@ -35,10 +35,7 @@ function WaveBac3({ mouseRef }) {
       const W = cvs.current.offsetWidth;
       const H = cvs.current.offsetHeight;
       if (!W || !H) { raf = requestAnimationFrame(loop); return; }
-      ctx.clearRect(0, 0, W, H);
-
-      ctx.fillStyle = '#0f172a';
-      ctx.fillRect(0, 0, W, H);
+      ctx.clearRect(0, 0, W, H); // CSS background handles the dark fill
 
       const mouse = mouseRef.current;
       for (const [yFrac, amp, freq, phase, alpha] of [
@@ -95,10 +92,7 @@ function WaveBac5({ mouseRef }) {
       const W = cvs.current.offsetWidth;
       const H = cvs.current.offsetHeight;
       if (!W || !H) { raf = requestAnimationFrame(loop); return; }
-      ctx.clearRect(0, 0, W, H);
-
-      ctx.fillStyle = '#0d0520';
-      ctx.fillRect(0, 0, W, H);
+      ctx.clearRect(0, 0, W, H); // CSS background handles the dark fill
 
       const mouse = mouseRef.current;
 
@@ -189,14 +183,7 @@ function WaveCurrent({ mouseRef }) {
       const W = cvs.current.offsetWidth;
       const H = cvs.current.offsetHeight;
       if (!W || !H) { raf = requestAnimationFrame(loop); return; }
-      ctx.clearRect(0, 0, W, H);
-
-      // Dark indigo background
-      const bg = ctx.createLinearGradient(0, 0, 0, H);
-      bg.addColorStop(0, '#08081e');
-      bg.addColorStop(1, '#0d0a2c');
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, W, H);
+      ctx.clearRect(0, 0, W, H); // CSS gradient background handles the dark fill
 
       const mouse = mouseRef.current;
       const prog = mouse.on ? mouse.x / W : 0.5;
