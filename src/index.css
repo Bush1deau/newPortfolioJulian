@@ -471,20 +471,19 @@ nav {
   text-transform: uppercase;
 }
 
-/* Text colours — dark canvas footers need white text */
+/* Text colours — light page background, use theme text colours */
 .footer--bac3 .footer-stage__name,
 .footer--bac5 .footer-stage__name,
-.footer--current .footer-stage__name { color: rgba(255,255,255,0.90); }
+.footer--current .footer-stage__name { color: var(--color-text); }
 
 .footer--bac3 .footer-stage__meta,
 .footer--bac5 .footer-stage__eyebrow,
-.footer--current .footer-stage__eyebrow { color: rgba(255,255,255,0.40); }
+.footer--current .footer-stage__eyebrow { color: var(--color-text-muted); }
 
-/* Footer background — canvas is transparent, CSS provides the base color
-   so any subpixel gap between canvas and footer edge is invisible */
-.footer--bac3    { background: #111827; }   /* matches --color-footer-bg */
-.footer--bac5    { background: #0d0520; }
-.footer--current { background: linear-gradient(to bottom, #08081e, #0d0a2c); }
+/* Footer background = page background so the non-wave area is seamless */
+.footer--bac3,
+.footer--bac5,
+.footer--current { background: var(--color-bg); }
 
 /* BAC+3 centred layout */
 .footer-stage--clean {
@@ -505,7 +504,7 @@ nav {
   min-height: 64px;
 }
 
-/* BAC+5 tag grid — dark glass */
+/* BAC+5 tag grid — light glass on page background */
 .footer-lab-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(94px, 1fr));
@@ -513,33 +512,32 @@ nav {
 }
 .footer-lab-grid span {
   padding: 12px 14px;
-  border: 1px solid rgba(167,139,250,0.28);
+  border: 1px solid rgba(124,58,237,0.20);
   border-radius: 14px;
-  background: rgba(255,255,255,0.07);
-  color: rgba(196,181,253,0.90);
+  background: rgba(124,58,237,0.07);
+  color: #5b21b6;
   font-size: 0.78rem;
   font-weight: 800;
   text-align: center;
-  box-shadow: 0 4px 18px rgba(88,28,135,0.30);
+  box-shadow: 0 4px 16px rgba(88,28,135,0.08);
 }
 
-/* Actuellement panel — dark glass */
+/* Actuellement panel — light glass on page background */
 .footer-current-panel {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px;
-  border: 1px solid rgba(129,140,248,0.26);
+  border: 1px solid rgba(79,70,229,0.18);
   border-radius: 18px;
-  background: rgba(255,255,255,0.06);
-  box-shadow: 0 8px 32px rgba(15,23,42,0.40);
-  backdrop-filter: blur(8px);
+  background: rgba(79,70,229,0.06);
+  box-shadow: 0 4px 20px rgba(79,70,229,0.10);
 }
 .footer-current-panel span {
   padding: 9px 12px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.08);
-  color: rgba(165,180,252,0.92);
+  background: rgba(79,70,229,0.08);
+  color: #4f46e5;
   font-size: 0.76rem;
   font-weight: 800;
 }
