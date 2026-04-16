@@ -110,9 +110,11 @@ const AppContent = () => {
                       bac5: 'Julian LEROY, développeur Fullstack',
                       current: 'Julian LEROY, développeur fullstack | RPA',
                     }[version]}</h1>
-                    <p className="fade-in slogan">
-                      <i>Construisons ensemble l'avenir numérique !</i>
-                    </p>
+                    {version === 'current' && (
+                      <p className="fade-in slogan">
+                        <i>Construisons ensemble l'avenir numérique !</i>
+                      </p>
+                    )}
                     <div className="cta-buttons">
                       <Link to="/cv"           className="cta-button">Voir mon CV</Link>
                       <Link to="/realisations" className="cta-button">Voir mes réalisations</Link>
