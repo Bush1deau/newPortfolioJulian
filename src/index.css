@@ -419,10 +419,10 @@ nav {
 /* Canvas fills the entire footer behind content */
 .footer-wave-canvas {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0; right: 0;
+  bottom: -1px; /* covers any subpixel gap at the footer bottom edge */
   display: block;
+  border: none;
   pointer-events: none;
 }
 

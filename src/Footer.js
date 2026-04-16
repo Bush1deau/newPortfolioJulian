@@ -139,9 +139,10 @@ function WaveBac5({ mouseRef }) {
         });
       }
 
+      // Update → filter dead → draw (prevents negative arc radius crash)
+      for (const p of pts.current) { p.x += p.vx; p.y += p.vy; p.life -= p.decay; }
       pts.current = pts.current.filter(p => p.life > 0);
       for (const p of pts.current) {
-        p.x += p.vx; p.y += p.vy; p.life -= p.decay;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
         ctx.fillStyle = `hsl(${p.hue},90%,70%)`;
@@ -285,9 +286,10 @@ function WaveCurrent({ mouseRef }) {
           hue: 195 + Math.random() * 65,
         });
       }
+      // Update → filter dead → draw (prevents negative arc radius crash)
+      for (const p of pts.current) { p.x += p.vx; p.y += p.vy; p.life -= p.decay; }
       pts.current = pts.current.filter(p => p.life > 0);
       for (const p of pts.current) {
-        p.x += p.vx; p.y += p.vy; p.life -= p.decay;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
         ctx.fillStyle = `hsl(${p.hue},90%,75%)`;
