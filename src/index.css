@@ -413,7 +413,7 @@ nav {
 .footer--bac3,
 .footer--bac5,
 .footer--current {
-  padding: 32px clamp(18px, 5vw, 64px);
+  padding: 20px clamp(14px, 4vw, 52px);
 }
 
 /* Canvas fills the entire footer behind content */
@@ -482,7 +482,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 92px;
+  min-height: 64px;
 }
 
 /* BAC+5 tag grid — dark glass */
