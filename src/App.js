@@ -105,10 +105,10 @@ const AppContent = () => {
                   <div className="hero-copy">
                     {version === 'current' && <p className="hero-kicker">Portfolio 2025 / Fullstack</p>}
                     <h1 id="autotext">{{
-                      bac2: 'étudiant développeur',
-                      bac3: 'développeur',
+                      bac2: 'Julian LEROY, étudiant développeur',
+                      bac3: 'Julian LEROY, développeur',
                       bac5: 'Julian LEROY, développeur Fullstack',
-                      current: 'développeur fullstack | RPA',
+                      current: 'Julian LEROY, développeur fullstack | RPA',
                     }[version]}</h1>
                     <p className="fade-in slogan">
                       <i>Construisons ensemble l'avenir numérique !</i>
