@@ -471,15 +471,10 @@ nav {
   text-transform: uppercase;
 }
 
-/* "by Julian." — each theme gets its primary colour */
-.footer--bac3 .footer-stage__name { color: #3b82f6; }
-.footer--bac5 .footer-stage__name { color: #7c3aed; }
-.footer--current .footer-stage__name {
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* "by Julian." — readable over each wave background */
+.footer--bac3 .footer-stage__name  { color: #3b82f6; }
+.footer--bac5 .footer-stage__name  { color: rgba(255,255,255,0.90); }
+.footer--current .footer-stage__name { color: rgba(255,255,255,0.90); }
 
 .footer--bac3 .footer-stage__meta,
 .footer--bac5 .footer-stage__eyebrow,
@@ -522,32 +517,32 @@ nav {
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 
-/* BAC+5 — outlined violet, fills on hover */
+/* BAC+5 — white outline on violet wave, fills white on hover */
 .footer-cta--bac5 {
-  color: #7c3aed;
-  border: 2px solid rgba(124,58,237,0.40);
-  background: rgba(124,58,237,0.06);
+  color: rgba(255,255,255,0.88);
+  border: 2px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.10);
 }
 .footer-cta--bac5:hover {
-  background: #7c3aed;
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.70);
   color: #fff;
-  border-color: #7c3aed;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(124,58,237,0.30);
+  box-shadow: 0 8px 24px rgba(88,28,135,0.30);
 }
 
-/* Actuellement — indigo→cyan gradient fill on hover */
+/* Actuellement — white outline on aurora wave, gradient glow on hover */
 .footer-cta--current {
-  color: #4f46e5;
-  border: 2px solid rgba(79,70,229,0.35);
-  background: rgba(79,70,229,0.06);
+  color: rgba(255,255,255,0.88);
+  border: 2px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.10);
 }
 .footer-cta--current:hover {
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  background: linear-gradient(135deg, rgba(79,70,229,0.55), rgba(6,182,212,0.55));
+  border-color: rgba(255,255,255,0.60);
   color: #fff;
-  border-color: transparent;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(79,70,229,0.28);
+  box-shadow: 0 8px 28px rgba(79,70,229,0.35);
 }
 
 @media (max-width: 720px) {
