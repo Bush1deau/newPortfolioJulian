@@ -103,16 +103,7 @@ const AppContent = () => {
               <div className="home">
                 <div className={`home-content ${version === 'current' ? 'home-content--current' : ''}`}>
                   <div className="hero-copy">
-                    {version === 'current' && (
-                      <a
-                        href="https://jl-automate.fr"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hero-kicker"
-                      >
-                        En poste chez JL AUTOMATE ↗
-                      </a>
-                    )}
+                    {version === 'current' && <p className="hero-kicker">Portfolio 2025 / Fullstack</p>}
                     <h1 id="autotext">{{
                       bac2: 'Julian LEROY, étudiant développeur',
                       bac3: 'Julian LEROY, développeur',
@@ -130,18 +121,27 @@ const AppContent = () => {
                     </div>
                   </div>
                   {version === 'current' && (
-                    <div className="hero-dashboard" aria-hidden="true">
-                      <div className="hero-dashboard__top">
-                        <span>Poste actuel</span>
-                        <strong>JL AUTOMATE</strong>
-                      </div>
-                      <div className="hero-dashboard__grid">
-                        <span>React</span>
-                        <span>Node</span>
-                        <span>UX</span>
+                    <div className="hero-dashboard">
+                      <a
+                        href="https://jl-automate.fr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hero-dashboard__company"
+                        aria-label="Voir le site JL AUTOMATE (nouvel onglet)"
+                      >
+                        <img
+                          src={`${process.env.PUBLIC_URL}/logo-jlautomate.png`}
+                          alt="JL AUTOMATE"
+                          className="hero-dashboard__logo"
+                        />
+                      </a>
+                      <div className="hero-dashboard__grid" aria-hidden="true">
+                        <span>Python</span>
+                        <span>OCR</span>
                         <span>API</span>
+                        <span>React</span>
                       </div>
-                      <div className="hero-dashboard__meter">
+                      <div className="hero-dashboard__meter" aria-hidden="true">
                         <span />
                       </div>
                     </div>
