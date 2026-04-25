@@ -188,24 +188,24 @@ function WaveCurrent({ mouseRef }) {
 
       const mouse = mouseRef.current;
       const prog = mouse.on ? mouse.x / W : 0.5;
-      // Slow oscillating hue shift (aurora feel even without cursor)
-      const hueSwing = Math.sin(t * 0.18) * 12;
+      // Slow oscillating shimmer in lightness only (no hue shift → stays JL navy)
+      const lightShift = Math.sin(t * 0.18) * 3 + prog * 5;
 
-      function buildGrad(h0, h1) {
+      function navyGrad(baseL) {
         const g = ctx.createLinearGradient(0, 0, W, 0);
-        g.addColorStop(0,   `hsl(${h0 + hueSwing - prog * 35},78%,55%)`);
-        g.addColorStop(0.5, `hsl(${(h0+h1)/2 + hueSwing - prog * 25},82%,58%)`);
-        g.addColorStop(1,   `hsl(${h1 + hueSwing - prog * 18},88%,52%)`);
+        g.addColorStop(0,   `hsl(225, 100%, ${baseL + lightShift}%)`);
+        g.addColorStop(0.5, `hsl(225, 100%, ${baseL + 8 + lightShift}%)`);
+        g.addColorStop(1,   `hsl(225, 100%, ${baseL + lightShift}%)`);
         return g;
       }
 
-      const gradA = buildGrad(225, 215); // JL AUTOMATE blue range
-      const gradB = buildGrad(225, 30);  // blue → orange brand sweep
+      const gradA = navyGrad(28); // mid layer — JL navy variations
+      const gradB = navyGrad(30); // front layer — JL navy variations
 
-      // Background layers — back uses solid colour so aurora doesn't tint the page bg
+      // Background layers — pure JL navy, no other hues
       for (const [yFrac, amp, freq, phase, fill, alpha] of [
-        [0.15, 16, 0.006, 4.0, '#0030B8', 0.14],  // solid subtle wash
-        [0.30, 12, 0.010, 0.6, gradA,     0.40],  // aurora mid
+        [0.15, 16, 0.006, 4.0, '#002395', 0.18],  // solid deep navy wash
+        [0.30, 12, 0.010, 0.6, gradA,     0.55],  // navy mid
       ]) {
         ctx.beginPath();
         ctx.moveTo(0, H);
@@ -248,22 +248,21 @@ function WaveCurrent({ mouseRef }) {
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        // Glowing crest line (aurora shimmer)
+        // Glowing crest line — JL orange highlight
         if (cX.length) {
           ctx.beginPath();
           ctx.moveTo(cX[0], cY[0]);
           for (let i = 1; i < cX.length; i++) ctx.lineTo(cX[i], cY[i]);
-          const glowHue = 35 + hueSwing - prog * 6;
-          ctx.strokeStyle = `hsl(${glowHue},100%,70%)`;
+          ctx.strokeStyle = '#FF8500';
           ctx.lineWidth = 1.8;
           ctx.shadowBlur = 18;
-          ctx.shadowColor = `hsl(${glowHue},100%,55%)`;
+          ctx.shadowColor = '#FF8500';
           ctx.stroke();
           ctx.shadowBlur = 0;
         }
       }
 
-      // Particles — JL AUTOMATE blue & orange palette
+      // Particles — only JL navy & orange, no in-between hues
       if (mouse.on && Math.random() < 0.35) {
         const px = mouse.x + (Math.random() - 0.5) * 80;
         const wy = H * 0.44 + Math.sin(px * 0.016 + t + 1.9) * 8;
@@ -274,7 +273,7 @@ function WaveCurrent({ mouseRef }) {
           life: 1,
           decay: 0.013 + Math.random() * 0.010,
           r: Math.random() * 2.8 + 0.6,
-          hue: Math.random() > 0.45 ? 225 : 32,
+          color: Math.random() > 0.45 ? '#4D8CFF' : '#FF8500',
         });
       }
       // Update → filter dead → draw (prevents negative arc radius crash)
@@ -283,7 +282,7 @@ function WaveCurrent({ mouseRef }) {
       for (const p of pts.current) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${p.hue},95%,65%)`;
+        ctx.fillStyle = p.color;
         ctx.globalAlpha = p.life * 0.75;
         ctx.fill();
         ctx.globalAlpha = 1;

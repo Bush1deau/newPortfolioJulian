@@ -14,10 +14,10 @@ const GradientMesh = ({ canvasRef }) => {
     window.addEventListener('resize', resize);
 
     const orbs = [
-      { cx: 0.15, cy: 0.20, r: 0.35, color: [0, 48, 184],    speed: 0.0004 },  // JL deep blue
-      { cx: 0.75, cy: 0.15, r: 0.30, color: [14, 75, 255],   speed: 0.0006 },  // JL bright blue
-      { cx: 0.50, cy: 0.80, r: 0.40, color: [255, 133, 0],   speed: 0.0003 },  // JL orange
-      { cx: 0.85, cy: 0.65, r: 0.28, color: [255, 179, 64],  speed: 0.0005 },  // JL light orange
+      { cx: 0.15, cy: 0.20, r: 0.35, color: [0, 35, 149],    speed: 0.0004 },  // JL deep navy
+      { cx: 0.78, cy: 0.18, r: 0.30, color: [0, 48, 184],    speed: 0.0006 },  // JL navy
+      { cx: 0.20, cy: 0.78, r: 0.32, color: [0, 48, 184],    speed: 0.0003 },  // JL navy (bottom-left)
+      { cx: 0.85, cy: 0.72, r: 0.30, color: [255, 133, 0],   speed: 0.0005 },  // JL orange (bottom-right)
     ];
 
     const draw = () => {

@@ -266,7 +266,7 @@ nav {
   width: 76%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #0030B8, #4D8CFF, #FF8500);
+  background: linear-gradient(90deg, #0030B8 0%, #0030B8 80%, #FF8500 80%, #FF8500 100%);
 }
 
 /* ─── Title ── */
@@ -314,17 +314,13 @@ nav {
 /* Actuellement — thickest bar, aurora alternation indigo↔cyan */
 [data-theme="current"] #autotext {
   font-weight: 800; letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #0030B8 0%, #FF8500 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  border-right: 0.22em solid #0030B8;
+  color: #002395;
+  border-right: 0.22em solid #FF8500;
   animation: blink-current 1.4s ease-in-out infinite;
 }
 @keyframes blink-current {
   0%, 100% { border-color: transparent; }
-  15%, 35% { border-color: #0030B8; }
-  50%       { border-color: transparent; }
-  65%, 85% { border-color: #FF8500; }
+  50%      { border-color: #FF8500; }
 }
 
 /* ─── Slogan ── */
@@ -379,14 +375,15 @@ nav {
 
 /* Actuellement: indigo filled + outline variant */
 [data-theme="current"] .cta-button {
-  background: linear-gradient(135deg, #0030B8, #FF8500);
+  background: #0030B8;
   box-shadow: 0 4px 20px rgba(0,48,184,0.22);
   border-radius: 10px;
   font-size: 0.9rem; font-weight: 600;
 }
 [data-theme="current"] .cta-button:hover {
+  background: #FF8500;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,48,184,0.35);
+  box-shadow: 0 8px 28px rgba(255,133,0,0.35);
 }
 [data-theme="current"] .cta-button:nth-child(2) {
   background: transparent;
@@ -545,18 +542,18 @@ nav {
   box-shadow: 0 8px 24px rgba(88,28,135,0.30);
 }
 
-/* Actuellement — white outline on aurora wave, gradient glow on hover */
+/* Actuellement — white outline on navy wave, orange fill on hover */
 .footer-cta--current {
   color: rgba(255,255,255,0.88);
   border: 2px solid rgba(255,255,255,0.35);
   background: rgba(255,255,255,0.10);
 }
 .footer-cta--current:hover {
-  background: linear-gradient(135deg, rgba(0,48,184,0.55), rgba(255,133,0,0.55));
-  border-color: rgba(255,255,255,0.60);
+  background: #FF8500;
+  border-color: #FF8500;
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,48,184,0.35);
+  box-shadow: 0 8px 28px rgba(255,133,0,0.45);
 }
 
 @media (max-width: 720px) {
@@ -587,8 +584,7 @@ nav {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 [data-theme="current"] .page-title {
-  background: linear-gradient(135deg, #0030B8, #FF8500);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  color: #002395;
   letter-spacing: -0.02em;
 }
 
@@ -618,7 +614,7 @@ nav {
 }
 
 [data-theme="current"] .download-button {
-  background: linear-gradient(135deg, #0030B8, #FF8500);
+  background: #0030B8;
   box-shadow: 0 4px 18px rgba(0,48,184,0.22);
 }
 
@@ -640,8 +636,8 @@ nav {
 [data-theme="bac3"] .skill-bar-fill-blue  { background: #60a5fa; }
 [data-theme="bac5"] .skill-bar-fill-green { background: linear-gradient(90deg,#8b5cf6,#06b6d4); }
 [data-theme="bac5"] .skill-bar-fill-blue  { background: linear-gradient(90deg,#06b6d4,#8b5cf6); }
-[data-theme="current"] .skill-bar-fill-green { background: linear-gradient(90deg,#0030B8,#FF8500); }
-[data-theme="current"] .skill-bar-fill-blue  { background: linear-gradient(90deg,#4D8CFF,#0030B8); }
+[data-theme="current"] .skill-bar-fill-green { background: #FF8500; }
+[data-theme="current"] .skill-bar-fill-blue  { background: #0030B8; }
 
 /* ══════════════════════════════════════════════════════════════
    RÉALISATIONS
@@ -754,7 +750,7 @@ nav {
 
 [data-theme="bac3"] .submit-btn { box-shadow: 0 4px 14px rgba(59,130,246,0.25); }
 [data-theme="bac5"] .submit-btn { background: linear-gradient(135deg,#8b5cf6,#06b6d4); box-shadow: 0 0 18px rgba(139,92,246,0.22); }
-[data-theme="current"] .submit-btn { background: linear-gradient(135deg,#0030B8,#FF8500); box-shadow: 0 4px 18px rgba(0,48,184,0.22); }
+[data-theme="current"] .submit-btn { background: #0030B8; box-shadow: 0 4px 18px rgba(0,48,184,0.22); }
 
 /* ══════════════════════════════════════════════════════════════
    SLICK / MISC
