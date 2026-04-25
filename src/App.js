@@ -103,7 +103,16 @@ const AppContent = () => {
               <div className="home">
                 <div className={`home-content ${version === 'current' ? 'home-content--current' : ''}`}>
                   <div className="hero-copy">
-                    {version === 'current' && <p className="hero-kicker">Portfolio 2025 / Fullstack</p>}
+                    {version === 'current' && (
+                      <a
+                        href="https://jl-automate.fr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hero-kicker"
+                      >
+                        En poste chez JL AUTOMATE ↗
+                      </a>
+                    )}
                     <h1 id="autotext">{{
                       bac2: 'Julian LEROY, étudiant développeur',
                       bac3: 'Julian LEROY, développeur',
@@ -123,8 +132,8 @@ const AppContent = () => {
                   {version === 'current' && (
                     <div className="hero-dashboard" aria-hidden="true">
                       <div className="hero-dashboard__top">
-                        <span>Disponibilité</span>
-                        <strong>Actif</strong>
+                        <span>Poste actuel</span>
+                        <strong>JL AUTOMATE</strong>
                       </div>
                       <div className="hero-dashboard__grid">
                         <span>React</span>

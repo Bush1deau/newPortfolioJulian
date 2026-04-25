@@ -167,6 +167,12 @@ nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   box-shadow: 0 10px 30px rgba(79,70,229,0.08);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+.hero-kicker:hover {
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 14px 36px rgba(79,70,229,0.15);
 }
 .hero-kicker::before {
   content: '';
