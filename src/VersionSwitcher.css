@@ -222,15 +222,15 @@
 }
 
 [data-theme="current"] {
-  --vs-strip-bg:    rgba(79,70,229,0.90);
-  --vs-strip-hover: rgba(55,48,163,0.96);
+  --vs-strip-bg:    rgba(0,48,184,0.92);
+  --vs-strip-hover: rgba(0,35,149,0.96);
   --vs-panel-bg:    rgba(255,255,255,0.97);
-  --vs-panel-border:rgba(79,70,229,0.14);
-  --vs-title-color: #94a3b8;
-  --vs-dot-inactive:#c7d2fe;
-  --vs-line-color:  #e0e7ff;
-  --vs-text:        #0f172a;
-  --vs-muted:       #64748b;
+  --vs-panel-border:rgba(0,48,184,0.14);
+  --vs-title-color: #7D8AA4;
+  --vs-dot-inactive:#DCE6FF;
+  --vs-line-color:  #EAF1FF;
+  --vs-text:        #0A1A4A;
+  --vs-muted:       #5F6F88;
 }
 
 /* ── Mobile ─────────────────────────────────────────────────── */

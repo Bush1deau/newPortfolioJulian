@@ -82,33 +82,33 @@
   --hero-subtitle-size: clamp(1rem,   2vw, 1.35rem);
 }
 
-/* ─── Actuellement — Modern SaaS / Vibecoding ───────────── */
+/* ─── Actuellement — JL AUTOMATE brand colors ──────────── */
 [data-theme="current"] {
-  --color-bg:           #ffffff;
-  --color-surface:      #f9fafb;
-  --color-primary:      #4f46e5;
-  --color-primary-dark: #3730a3;
-  --color-accent:       #06b6d4;
-  --color-text:         #0f172a;
-  --color-text-muted:   #64748b;
-  --color-nav-bg:       rgba(255,255,255,0.80);
-  --color-nav-text:     #0f172a;
-  --color-border:       #e2e8f0;
-  --color-shadow:       rgba(15,23,42,0.08);
-  --color-footer-bg:    #ffffff;
-  --color-footer-wave:  #ffffff;
+  --color-bg:           #F8FAFD;
+  --color-surface:      #ffffff;
+  --color-primary:      #0030B8;
+  --color-primary-dark: #002395;
+  --color-accent:       #FF8500;
+  --color-text:         #0A1A4A;
+  --color-text-muted:   #5F6F88;
+  --color-nav-bg:       rgba(248,250,253,0.82);
+  --color-nav-text:     #0A1A4A;
+  --color-border:       #DCE6FF;
+  --color-shadow:       rgba(0,48,184,0.10);
+  --color-footer-bg:    #F8FAFD;
+  --color-footer-wave:  #F8FAFD;
 
   --font-heading: 'Inter', sans-serif;
   --font-body:    'Inter', sans-serif;
   --font-nav:     'Inter', sans-serif;
 
   --radius-sm: 8px; --radius-md: 12px; --radius-lg: 20px;
-  --glass-bg:     rgba(255,255,255,0.70);
-  --glass-border: rgba(79,70,229,0.12);
+  --glass-bg:     rgba(255,255,255,0.74);
+  --glass-border: rgba(0,48,184,0.14);
   --glass-blur:   20px;
 
-  --gradient-hero: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(79,70,229,0.08) 0%, rgba(6,182,212,0.06) 100%);
+  --gradient-hero: linear-gradient(135deg, #0030B8 0%, #FF8500 100%);
+  --gradient-soft: linear-gradient(135deg, rgba(0,48,184,0.08) 0%, rgba(255,133,0,0.06) 100%);
 
   --hero-title-size:    clamp(2.4rem, 6vw, 5rem);
   --hero-subtitle-size: clamp(1rem,   2vw, 1.4rem);

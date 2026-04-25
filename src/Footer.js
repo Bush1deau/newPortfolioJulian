@@ -199,12 +199,12 @@ function WaveCurrent({ mouseRef }) {
         return g;
       }
 
-      const gradA = buildGrad(248, 195); // background layers
-      const gradB = buildGrad(246, 190); // front layer
+      const gradA = buildGrad(225, 215); // JL AUTOMATE blue range
+      const gradB = buildGrad(225, 30);  // blue → orange brand sweep
 
       // Background layers — back uses solid colour so aurora doesn't tint the page bg
       for (const [yFrac, amp, freq, phase, fill, alpha] of [
-        [0.15, 16, 0.006, 4.0, '#4f46e5', 0.12],  // solid subtle wash
+        [0.15, 16, 0.006, 4.0, '#0030B8', 0.14],  // solid subtle wash
         [0.30, 12, 0.010, 0.6, gradA,     0.40],  // aurora mid
       ]) {
         ctx.beginPath();
@@ -253,17 +253,17 @@ function WaveCurrent({ mouseRef }) {
           ctx.beginPath();
           ctx.moveTo(cX[0], cY[0]);
           for (let i = 1; i < cX.length; i++) ctx.lineTo(cX[i], cY[i]);
-          const glowHue = 220 + hueSwing - prog * 25;
-          ctx.strokeStyle = `hsl(${glowHue},90%,80%)`;
-          ctx.lineWidth = 1.5;
-          ctx.shadowBlur = 16;
-          ctx.shadowColor = `hsl(${glowHue},90%,70%)`;
+          const glowHue = 35 + hueSwing - prog * 6;
+          ctx.strokeStyle = `hsl(${glowHue},100%,70%)`;
+          ctx.lineWidth = 1.8;
+          ctx.shadowBlur = 18;
+          ctx.shadowColor = `hsl(${glowHue},100%,55%)`;
           ctx.stroke();
           ctx.shadowBlur = 0;
         }
       }
 
-      // Particles (same as BAC+5, indigo→cyan palette)
+      // Particles — JL AUTOMATE blue & orange palette
       if (mouse.on && Math.random() < 0.35) {
         const px = mouse.x + (Math.random() - 0.5) * 80;
         const wy = H * 0.44 + Math.sin(px * 0.016 + t + 1.9) * 8;
@@ -274,7 +274,7 @@ function WaveCurrent({ mouseRef }) {
           life: 1,
           decay: 0.013 + Math.random() * 0.010,
           r: Math.random() * 2.8 + 0.6,
-          hue: 195 + Math.random() * 65,
+          hue: Math.random() > 0.45 ? 225 : 32,
         });
       }
       // Update → filter dead → draw (prevents negative arc radius crash)
@@ -283,7 +283,7 @@ function WaveCurrent({ mouseRef }) {
       for (const p of pts.current) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${p.hue},90%,75%)`;
+        ctx.fillStyle = `hsl(${p.hue},95%,65%)`;
         ctx.globalAlpha = p.life * 0.75;
         ctx.fill();
         ctx.globalAlpha = 1;
