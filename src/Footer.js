@@ -188,7 +188,7 @@ function WaveCurrent({ mouseRef }) {
 
       const mouse = mouseRef.current;
       const prog = mouse.on ? mouse.x / W : 0.5;
-      // Slow oscillating shimmer in lightness only (no hue shift → stays JL navy)
+      // Slow oscillating shimmer in lightness only (stays on JL navy hue 225°)
       const lightShift = Math.sin(t * 0.18) * 3 + prog * 5;
 
       function navyGrad(baseL) {
@@ -199,13 +199,14 @@ function WaveCurrent({ mouseRef }) {
         return g;
       }
 
-      const gradA = navyGrad(28); // mid layer — JL navy variations
-      const gradB = navyGrad(30); // front layer — JL navy variations
+      // Lighter navy waves visible against the solid navy footer background
+      const gradA = navyGrad(42); // mid layer
+      const gradB = navyGrad(50); // front layer (brighter blue)
 
       // Background layers — pure JL navy, no other hues
       for (const [yFrac, amp, freq, phase, fill, alpha] of [
-        [0.15, 16, 0.006, 4.0, '#002395', 0.18],  // solid deep navy wash
-        [0.30, 12, 0.010, 0.6, gradA,     0.55],  // navy mid
+        [0.10, 18, 0.006, 4.0, '#0030B8', 0.55],  // medium navy wash starts near top
+        [0.28, 12, 0.010, 0.6, gradA,     0.75],  // navy mid
       ]) {
         ctx.beginPath();
         ctx.moveTo(0, H);
@@ -227,7 +228,7 @@ function WaveCurrent({ mouseRef }) {
 
       // Front wave — collect crest points for the glow stroke
       {
-        const yFrac = 0.44, amp = 8, freq = 0.016, phase = 1.9;
+        const yFrac = 0.42, amp = 8, freq = 0.016, phase = 1.9;
         const cX = [], cY = [];
         ctx.beginPath();
         ctx.moveTo(0, H);

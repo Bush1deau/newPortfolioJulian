@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTheme } from "./ThemeContext";
 
 const skills = [
   { logo: "🌐", name: "HTML",       competence: 50, ease: 80 },
@@ -18,6 +19,44 @@ const skills = [
   { logo: "⚙️", name: ".NET",       competence: 20, ease: 40 },
   { logo: "📱", name: "Flutter",    competence: 20, ease: 50 },
   { logo: "💎", name: "Ruby",       competence: 10, ease: 25 },
+];
+
+const experiences = [
+  {
+    logo: `${process.env.PUBLIC_URL}/logo-jlautomate.png`,
+    company: "JL AUTOMATE",
+    period: "Mars 2025 — Aujourd'hui",
+    role: "Développeur RPA / Fullstack",
+    missions: [
+      "Réalisation de projets RPA",
+      "Gestion de projets RPA",
+    ],
+    stack: ["Python", "OCR", "API", "React"],
+    href: "https://jl-automate.fr",
+    current: true,
+  },
+  {
+    logo: "logo_lyreco.png",
+    company: "Lyreco Management",
+    period: "Octobre 2022 — Septembre 2024",
+    role: "Apprenti Développeur RPA",
+    missions: [
+      "Développement de solutions automatisées avec UIPath",
+      "Maintenance de machines virtuelles",
+      "Management de projets RPA",
+    ],
+    stack: ["VB.Net", "C#", "Python"],
+  },
+  {
+    logo: "logo_lycéeWatteau.png",
+    company: "Lycée Antoine Watteau",
+    period: "Stage — 10 semaines",
+    role: "Stagiaire Développeur Informatique",
+    missions: [
+      "Maintenance et redéveloppement du site internet",
+    ],
+    stack: ["Wordpress", "HTML", "CSS", "PHP"],
+  },
 ];
 
 const PrevArrow = ({ onClick }) => (
@@ -46,7 +85,46 @@ const NextArrow = ({ onClick }) => (
   >&#9654;</div>
 );
 
+const ExperienceCard = ({ exp }) => {
+  const inner = (
+    <>
+      <img src={exp.logo} alt={exp.company} className="company-logo" />
+      <div className="experience-details">
+        <div className="experience-head">
+          <h3>{exp.company}</h3>
+          {exp.current && <span className="experience-badge">En poste</span>}
+        </div>
+        <p className="experience-period">{exp.period}</p>
+        <p className="experience-role">{exp.role}</p>
+        <ul className="experience-missions">
+          {exp.missions.map((m, i) => <li key={i}>{m}</li>)}
+        </ul>
+        <div className="experience-stack">
+          {exp.stack.map((tech) => (
+            <span key={tech} className="tech-chip">{tech}</span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+
+  return exp.href ? (
+    <a
+      className="experience experience--link"
+      href={exp.href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {inner}
+    </a>
+  ) : (
+    <div className="experience">{inner}</div>
+  );
+};
+
 const Cv = () => {
+  const { version } = useTheme();
+
   const settings = {
     dots: false, infinite: true, speed: 500, slidesToShow: 5, slidesToScroll: 1,
     prevArrow: <PrevArrow />, nextArrow: <NextArrow />,
@@ -61,38 +139,53 @@ const Cv = () => {
   return (
     <div className="cv-wrapper fade-in">
       <h1 className="page-title">Mon CV</h1>
+      <p className="page-lede">
+        Développeur fullstack et RPA, actuellement en poste chez{" "}
+        <a
+          href="https://jl-automate.fr"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="page-lede__link"
+        >
+          JL AUTOMATE
+        </a>.
+      </p>
 
       <a href="CV Leroy Julian.pdf" download className="download-button">
         Télécharger le CV
       </a>
 
+      {version === 'current' && (
+        <div className="cv-quickinfo">
+          <div className="cv-quickinfo__cell">
+            <span className="cv-quickinfo__label">Statut</span>
+            <strong>En poste</strong>
+          </div>
+          <div className="cv-quickinfo__cell">
+            <span className="cv-quickinfo__label">Société</span>
+            <strong>JL AUTOMATE</strong>
+          </div>
+          <div className="cv-quickinfo__cell">
+            <span className="cv-quickinfo__label">Spécialités</span>
+            <strong>RPA · Fullstack</strong>
+          </div>
+          <div className="cv-quickinfo__cell">
+            <span className="cv-quickinfo__label">Stack actuel</span>
+            <strong>Python · OCR · API · React</strong>
+          </div>
+        </div>
+      )}
+
       <hr className="divider" />
 
-      <div className="experiences">
-        <h2 style={{ textAlign: "center" }}>Dernières Expériences</h2>
-
-        <div className="experience">
-          <img src="logo_lyreco.png" alt="Lyreco" className="company-logo" />
-          <div className="experience-details">
-            <h3>Lyreco Management</h3>
-            <p><strong>Durée :</strong> Octobre 2022 — Septembre 2024</p>
-            <p><strong>Poste :</strong> Apprenti Développeur RPA</p>
-            <p><strong>Missions :</strong> Développement de solutions automatisées avec UIPath, maintenance de machines virtuelles, management de projets RPA</p>
-            <p><strong>Langages :</strong> VB.Net, C#, Python</p>
-          </div>
+      <section className="experiences">
+        <h2 className="experiences-title">Dernières expériences</h2>
+        <div className="experience-list">
+          {experiences.map((exp) => (
+            <ExperienceCard key={exp.company} exp={exp} />
+          ))}
         </div>
-
-        <div className="experience">
-          <img src="logo_lycéeWatteau.png" alt="Lycée Watteau" className="company-logo" />
-          <div className="experience-details">
-            <h3>Lycée Antoine Watteau</h3>
-            <p><strong>Durée :</strong> 10 semaines</p>
-            <p><strong>Poste :</strong> Stagiaire Développeur Informatique</p>
-            <p><strong>Missions :</strong> Maintenance et redéveloppement du site internet</p>
-            <p><strong>Langages :</strong> Wordpress, HTML, CSS, PHP</p>
-          </div>
-        </div>
-      </div>
+      </section>
 
       <hr className="divider" />
 

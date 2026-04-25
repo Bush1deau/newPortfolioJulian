@@ -103,7 +103,6 @@ const AppContent = () => {
               <div className="home">
                 <div className={`home-content ${version === 'current' ? 'home-content--current' : ''}`}>
                   <div className="hero-copy">
-                    {version === 'current' && <p className="hero-kicker">Portfolio 2025 / Fullstack</p>}
                     <h1 id="autotext">{{
                       bac2: 'Julian LEROY, étudiant développeur',
                       bac3: 'Julian LEROY, développeur',
